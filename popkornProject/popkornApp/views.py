@@ -12,3 +12,18 @@ def index(request):
 
 def footer(request):
     return render(request,'footer.html')
+
+def news(request):
+    return render(request,'news.html')
+
+def chart(request):
+    return render(request,'chart.html')
+
+def media(request):
+    return render(request,'media.html')
+
+def calendar(request):
+    return render(request,'calendar.html')
+
+def community(request):
+    return render(request,'community.html')

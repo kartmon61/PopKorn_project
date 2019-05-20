@@ -74,6 +74,25 @@ footer strong{
     background-color:#8a8888;
 }
 
-/*인덱스 페이지*/
 
+/*인덱스 페이지*/
+#index section{
+    display:block;
+    margin-top:5100000px;
+}
+#index article{
+    display: block;
+    border-bottom: 1px solid var(--basic-br-color);
+    
+
+}
+.fotorama div{
+    height:100%;
+}
+.fotorama a{
+    z-index: 1;
+    display:block;
+    height: 100%;
+
+}
 

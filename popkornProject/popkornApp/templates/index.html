@@ -4,29 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}"/>
     <!-- 1. Link to jQuery (1.8 or later), -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
     <!-- fotorama.css & fotorama.js. -->
     <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}"/>
-
+    <script src="{% static 'scripts/main.js' %}"></script>
     <title>popKorn</title>
 </head>
 <body id="index">
     <header></header>
     <section>
-        <article><!--뉴스 헤드라인--></article>
-        <article><!--차트, 오늘의 kpop--></article>
-        <article><!--Main artists--></article>
+        <article>
+            <div class="fotorama" 
+                    data-loop = "true"
+                    data-autoplay="2000" 
+                    data-arrows="false"
+                    data-keyboard="true"
+                    data-width="100%"
+                    data-height="400"
+                    data-click="false"
+                    data-swipe="false"
+                    data-nav="false"
+                    >
+                <div data-img="https://www.allkpop.com/upload/2019/05/content/190416/btsjpg.jpg"
+                        data-fit="cover">
+                    <a href="https://www.allkpop.com/article/2019/05/boy-with-luv-becomes-btss-tenth-music-video-to-surpass-300-million-youtube-views">
+                        NEWS Posted by danisurst AKP STAFF  23 hours ago
+                        'Boy With Luv' becomes BTS's tenth music video to surpass 300 million YouTube views
+                    </a>
+                </div>
+                <div data-img="https://www.allkpop.com/upload/2019/05/content/011128/twjpg.jpg"
+                        data-fit="cover">
+                        <a href="https://www.allkpop.com/article/2019/05/twice-announce-their-first-ever-us-tour-dates">
+                        TWICE announce their first-ever U.S tour dates!
+                    </a>
+                </div>
+                <div data-img="https://www.allkpop.com/upload/2019/05/content/081710/bpjpg.jpg"
+                        data-fit="cover">
+                        <a href="https://www.allkpop.com/article/2019/05/blackpink-becomes-the-most-streamed-girl-group-in-youtube-history">
+                            BLACKPINK becomes the most streamed girl group in YouTube history
+                        </a>
+                </div>
+            </div>        
+        </article>
+        <article>차트, 오늘의 kpop</article>
+        <article>Main artists</article>
+       
+
     </section>
     <footer></footer>
 </body>
-    <script>
-        $(document).ready( function() {
-            $("header").load("/header");
-            $("footer").load("/footer");
-         });
-     </script>
 </html>

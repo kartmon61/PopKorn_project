@@ -16,6 +16,7 @@ a{
     color:var(--basic-txt-color);
 }
 header{
+    z-index: 1000;
     display:block;
     border-bottom:1px solid var(--basic-br-color);
     width:100%;
@@ -63,6 +64,11 @@ footer strong{
     font-weight: bold;
     font-size: 1.5em;
 }
+section{
+    display:block;
+    margin-top:51px; 
+}
+
 /*클래스*/
 .btn{
     border:0.8px solid var(--basic-br-color);
@@ -71,9 +77,72 @@ footer strong{
     background-color:#ffffff;
 }
 .btn:hover{
-    background-color:#8a8888;
+    background-color:#f1f1f1;
+}
+
+.media-title{
+    font-size: 1em;
+    position: relative;
+    width:80%;
+    margin:auto;
+    color:#464646;
+}
+.media-title p{
+    font-size: 0.8em;
+    color:#8a8888;
+}
+.tag{
+    font-weight: bold;
+}
+.paging{
+    list-style-type: none;
+    display: block;
+    text-align: center;
+}
+.paging li{
+    display:inline-block;
+    margin-left:10px;
+    color:#b9b7b7;
+    font-size: 0.8em;
+}
+.active, .paging a:hover{
+    color:#008cff;
 }
 
 /*인덱스 페이지*/
 
+#index article{
+    display: block;
+    border-bottom: 1px solid var(--basic-br-color);
+    
 
+}
+.fotorama div{
+    height:100%;
+}
+.fotorama a{    
+    z-index: 1;
+    display:block;
+    width:100%;
+    padding:50px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color:#ffffff;
+    text-align:center;
+    font-size: 1em;
+    position: absolute;
+    bottom:0;
+}
+.fotorama a:hover{
+    color:#8a8888;
+}
+
+#media article{
+    display: block;
+    border-bottom: 1px solid var(--basic-br-color);
+    padding:10px;
+}
+
+#media iframe{
+    display:block;
+    margin:auto;
+}

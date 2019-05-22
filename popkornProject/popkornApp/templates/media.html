@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -13,7 +14,13 @@
     <script src="{% static 'scripts/main.js' %}"></script>
     <title>popKorn</title>
 </head>
+<script>
+                $(document).ready( function() {
+                $("header").load("/header");
+                });
+            </script>
 <body id="media">
+              
     <header></header>
     <section>
         <article>
@@ -93,4 +100,9 @@
     </section>
     <footer></footer>
 </body>
+<script>
+                $(document).ready( function() {
+                $("footer").load("/footer");
+                });
+              </script>
 </html>

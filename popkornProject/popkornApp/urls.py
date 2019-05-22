@@ -20,4 +20,13 @@ urlpatterns = [
     path('media',views.media,name='media'),
     path('calendar',views.calendar,name='calendar'),
     path('community',views.community,name='community'),
+    path('community/new',views.communitynew,name='communitynew'),
+    path('community/create',views.communitycreate,name='communitycreate'),
+    path('community/show/<int:post_id>',views.communityshow,name='communityshow'),
+    path('community/edit/<int:post_id>',views.communityedit,name='communityedit'),
+    path('community/update/<int:post_id>',views.communityupdate,name='communityupdate'),
+    path('community/delete/<int:post_id>',views.communitydelete,name='communitydelete'),
+    path('community/comentcreate/<int:post_id>',views.comentcreate,name='comentcreate'),
+    path('community/comentdelete/<int:post_id>/<int:coment_id>',views.comentdelete,name='comentdelete'),
+
 ]

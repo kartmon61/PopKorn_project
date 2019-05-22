@@ -1,56 +1,66 @@
+<html>
 
 
-  <title>community</title>
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}"/>
 
-<div class >
-    <h1>Popkorn Community</h1>
-</div>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}"/>
+    <!-- 1. Link to jQuery (1.8 or later), -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
+    <!-- fotorama.css & fotorama.js. -->
+    <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
+    <script src="{% static 'scripts/main.js' %}"></script>
+    <title>popKorn</title>
 
-<form action="">
-  <div>
-      <table>
-          <thead class="thead_community">
-            <tr>
-              <th scope="col">No</th>
-              <th scope="col">Title</th>
-              <th scope="col">Name</th>
-              <th scope="col">Date</th>
-              <th scope="col">Recommends</th>
-              <th scope="col">Views</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>TitleName1</td>
-              <td>Name1</td>
-              <td>00-00-00</td>
-              <td>00</td>
-              <td>00</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>TitleName2</td>
-              <td>Name2</td>
-              <td>00-00-00</td>
-              <td>00</td>
-              <td>00</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>TitleName3</td>
-              <td>Name3</td>
-              <td>00-00-00</td>
-              <td>00</td>
-              <td>00</td>
-            </tr>
-          </tbody>
-        </table>
-  </div>
-    <button type="submit">Write</button>
-  <div>
-  </div>
-</form>
-    
+
+</head>
+<script>
+    $(document).ready( function() {
+    $("header").load("/header");
+    });
+</script>
+<body>
+  <header></header>
+  <br><br>
+  <nav class="navbar navbar-light bg-light">
+          <br><br><br>
+        </nav>
+        <a href="/community/new" class="btn btn-secondary btn-lg enable" tabindex="-1" role="button" aria-disabled="true">Posting</a>
+
+        <section>
+          {% for post in posts %}
+            <article>
+                <div class="list-group">
+                      <a href="/community/show/{{post.id}}" class="tag"  >No. ({{ post.id }}) {{post.title}}</a>
+                        <div class="d-flex w-100 justify-content-between">
+                          <small>Created time : {{post.created_at}}</small>
+                     
+                      <a href="/community/edit/{{post.id}}" class="btn btn-secondary btn-lg enable" tabindex="-1" role="button" aria-disabled="true">Modify</a>
+                      <a href="/community/delete/{{post.id}}" class="btn btn-secondary btn-lg enable" tabindex="-1" role="button" aria-disabled="true">Delete</a>
+                </div>       
+            </article>
+            {% endfor %}
+<ul class="paging">
+    <li><a href="#">&lt;</a></li>
+    <li><a href="#" class="active">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&gt;</a></li>
+</ul>
+</section>
+<footer>
+
+</footer>
+</body>
+<script>
+    $(document).ready( function() {
+    $("footer").load("/footer");
+    });
+  </script>
+</html>    

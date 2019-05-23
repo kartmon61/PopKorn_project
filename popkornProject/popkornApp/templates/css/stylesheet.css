@@ -11,6 +11,9 @@ body{
     padding:0px;
     margin:0px;
 }
+h1{
+    color: #ff0000;
+}
 a{
     text-decoration: none;
     color:var(--basic-txt-color);

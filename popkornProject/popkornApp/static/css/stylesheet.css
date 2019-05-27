@@ -112,6 +112,10 @@ section{
     color:#008cff;
 }
 
+.small{
+    font-size:0.7em;
+    color: #888888;
+}
 /*인덱스 페이지*/
 
 #index article{
@@ -139,6 +143,7 @@ section{
     color:#8a8888;
 }
 
+/* 미디어 페이지 */
 #media article{
     display: block;
     border-bottom: 1px solid var(--basic-br-color);
@@ -152,21 +157,19 @@ section{
 
 /*커뮤니티 페이지*/
 
-.thead_community{
-    background-color:#ffffff;
-    padding: 10px; 
-    text-align:justify;
+#community ul{
+    display:block;
+    list-style:none;
+}
+#community li{
+    display:inline-block;
 }
 
-table{
-    width: 100%;
-    border-top:1px solid #444444;
-    border-collapse: collapse;
-
+#comm_write section{
+    padding:20px;
 }
-
-th,td{
-    border-bottom: 1px solid #444444;
-    padding: 10px;
+#comm_write form{
+    display:block;
+    width:80%;
+    margin:auto;
 }
-

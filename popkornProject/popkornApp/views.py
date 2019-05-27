@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Posting
-from .models import PostingComent
+from .models import Posting,PostingComent,Notice
 #관리자 공지사항 Notice 추가 (사용가능)
-from .models import Notice
 
 # Create your views here.
 def header(request):

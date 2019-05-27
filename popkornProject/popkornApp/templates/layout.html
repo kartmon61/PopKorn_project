@@ -1,0 +1,44 @@
+{% load static %}
+
+<!-- header, footer 합침 -->
+<!DOCTYPE html>
+<html lang="kor">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}"/>
+        <!-- 1. Link to jQuery (1.8 or later), -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
+        <!-- fotorama.css & fotorama.js. -->
+        <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
+        <title>popKorn</title>
+    </head>
+    <body>
+        <header>
+            <strong><a href="/">POPKORN</a></strong>
+            <ul>
+                <li><a href="news">NEWS</a></li>
+                <li><a href="chart">CHART</a></li>
+                <li><a href="media">MEDIA</a></li>
+                <li><a href="calendar">CALENDAR</a></li>
+                <li><a href="community">COMMUNITY</a></li>
+            </ul>
+            <a href="" class="btn">LOGIN</a>
+        </header>    
+        {% block layoutblock %}
+        {% endblock %}    
+
+        <footer>
+            <p>
+                <strong>31mg</strong><br/>
+                진호&nbsp;|&nbsp;kartmon@naver.com<br/>
+                주원&nbsp;|&nbsp;seozoo123@gmail.com<br/>
+                정인&nbsp;|&nbsp;alslahdk@naver.com<br/>
+                규리&nbsp;|&nbsp;itshoworld44@gmail.com<br/>
+                동현&nbsp;|&nbsp;<br/>
+            </p>
+        </footer>
+    </body>
+</html>

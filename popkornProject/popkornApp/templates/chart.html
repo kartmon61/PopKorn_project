@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
 {% extends 'layout.html' %}
 {% block layoutblock %}
-<script>
-        $(document).ready( function() {
-        $("header").load("/header");
-        });
-    </script>
 <section>
-    <header></header>
-    <br><br>
     <div style="pointer-events: none;">
     
         <table>
@@ -45,10 +36,4 @@
     </div>
     <footer></footer>
 </section>
-{% endblock %}    
-<script>
-        $(document).ready( function() {
-        $("footer").load("/footer");
-        });
-    </script>
-</html>
+{%endblock%}

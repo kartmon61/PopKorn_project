@@ -1,30 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-        {% load static %}
-        <title>Chart</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}"/>
-        <!-- 1. Link to jQuery (1.8 or later), -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
-        <!-- fotorama.css & fotorama.js. -->
-        <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
-        <script src="{% static 'scripts/main.js' %}"></script>
-</head>
+{% extends 'layout.html' %}
+{% block layoutblock %}
 <script>
         $(document).ready( function() {
         $("header").load("/header");
         });
     </script>
-<body>
+<section>
     <header></header>
     <br><br>
-    <h1>이곳은 Chart 페이지 입니다.</h1>
+    <div style="pointer-events: none;">
+    
+        <table>
+            <tr>
+                <td>
+                    <iframe src="/melon" width="400px" height="1030px" frameborder="0" scrolling="no"></iframe>
+                </td>
+
+                
+                <td>
+                    <iframe src="/gini" width="400px" height="1030px" frameborder="0" scrolling="no"></iframe>
+                </td>
+
+
+            </tr>
+
+            <tr>
+                <td>
+                    <iframe src="/buks" width="400px" height="1030px" frameborder="0" scrolling="no"></iframe>
+                </td>
+    
+                    
+                <td>
+                    <iframe src="/mnet" width="400px" height="1030px" frameborder="0" scrolling="no"></iframe>                 
+                </td>
+    
+    
+            </tr>
+        </table>
+
+            
+       
+    </div>
     <footer></footer>
-</body>
+</section>
+{% endblock %}    
 <script>
         $(document).ready( function() {
         $("footer").load("/footer");

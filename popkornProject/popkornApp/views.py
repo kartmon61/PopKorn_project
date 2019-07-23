@@ -15,9 +15,22 @@ def footer(request):
 def news(request):
     return render(request,'news.html')
 
+#-----------------chart iframe htmls-----------
 def chart(request):
-    return render(request,'chart.html')
+    return render(request,'chart.html') 
 
+def chartmelon(request):
+    return render(request,'melon.html')
+
+def chartgini(request):
+    return render(request,'gini.html')
+
+def chartbuks(request):
+    return render(request,'buks.html')
+
+def chartmnet(request):
+    return render(request,'mnet.html')    
+#----------------------------------------------
 def media(request):
     return render(request,'media.html')
 

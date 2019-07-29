@@ -1,8 +1,8 @@
 {% extends 'layout.html' %}
 {% block layoutblock %}
 
-<section id="community">
-  <a href="/community/new" class="btn btn-secondary btn-lg enable" tabindex="-1" role="button" aria-disabled="true">Posting</a>
+<section id="community"> 
+  <a href="/community/new" class="btn">WRITE</a>
   <!--
     <a href="/community/edit/{{post.id}}" class="btn btn-secondary btn-lg enable" tabindex="-1" role="button" aria-disabled="true">Modify</a>
                 <a href="/community/delete/{{post.id}}" class="btn btn-secondary btn-lg enable" tabindex="-1" role="button" aria-disabled="true">Delete</a>
@@ -11,8 +11,8 @@
     <ul class="list">
       <li><a href="/community/show/{{post.id}}" class="small"></a>{{ post.id }}</li>
       <li><a href="/community/show/{{post.id}}">{{post.title}}</a></li>
-      <li><a href="#" class="small">user_id</a></li>
-      <li>{{post.created_at}}</li>
+      <!--<li><a href="#" class="small">user_id</a></li>-->
+      <li><i class="date">{{post.created_at}}</i></li>
     </ul>       
      {% endfor %}
     <ul class="paging">

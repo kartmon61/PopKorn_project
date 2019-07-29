@@ -1,110 +1,78 @@
-<!DOCTYPE html>
-<html>
-<head>
-        {% load static %}
-        <title>News</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}"/>
-        <!-- 1. Link to jQuery (1.8 or later), -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
-        <!-- fotorama.css & fotorama.js. -->
-        <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
-        <script src="{% static 'scripts/main.js' %}"></script>
-</head>
-<script>
-        $(document).ready( function() {
-        $("header").load("/header");
-        });
-</script>
-
-<body id="index">
-    <header></header>
-    <br><br>
-    <section>
-        <article>
-                <h1>Hot Issue</h1>
-                <h1>May 21st</h1>
-                    
-                <div class="card" style="width: 18rem;">
-                        <img src="https://lh3.googleusercontent.com/IpOt9B_xBCatW8aBHP1cmRd1VtNoaaxmrI_BnkwU3QQMwihEzFVyPqp8FEJTnwEl5_2sZRDLyidErai1dYzrCaBtrLYPZ2zDqg=w1200-rw" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h2 class="card-title">The Beatles Museum In U.K. Officially Extends An Invite For BTS To Visit</h2>
-                          <p class="card-text">The Beatles Museum In U.K. Officially Extends An Invite For BTS To Visit
-                                They even offered a private tour and a special performance.</p>
-                          
-                        </div>
-                        <a href="https://www.koreaboo.com/news/beatles-museum-uk-officially-extends-invite-bts-visit/" class="btn btn-primary">more specific</a>
-                      </div>
-                      </article>
-                      <br>
-                      <article>
-                      <div class="card" style="width: 18rem;">
-                        <img src="https://lh3.googleusercontent.com/kucmPoVhjRCoMap5ogg6tnJQelfO-W0FaGGpL0Vf6aKtu2cGvpFa2MKU_aLHLDQWzOqgLLtSoS99IRrLlMDpD192S8Dc2xgI=w1200-rw" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h2 class="card-title">BLACKPINK Paid Respects To The Victims Of The Tragedy In Manchester During Their Performance At The Manchester Arena</h2>
-                          <p class="card-text">BLACKPINK did their part to ease the hearts of the victims.</p>
-                          
-                        </div>
-                        <a href="https://www.koreaboo.com/news/blackpink-paid-respects-victims-tragedy-manchester-performance-manchester-arena/" class="btn btn-primary">more specific</a>
-                      </div>
-                </article>
-                      <br>
-                      <article>
-                      <div class="card" style="width: 18rem;">
-                        <img src="https://lh3.googleusercontent.com/m2NvflOpgnEG0VmvMNPpiWyZcbeaDlV2NsWvolIeGFE_LLERYgfNLjqW2AYJFmg6YrW8GfIj5p_AgheynHuYykWnrPWiM2C3=w1200-rw" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h2 class="card-title">The Empire State Building In New York Gets A Purple Makeover Thanks To BTS</h2>
-                          <p class="card-text">New York purples BTS.</p>
-                          
-                        </div>
-                        <a href="https://www.koreaboo.com/news/empire-state-building-new-york-gets-purple-makeover-thanks-bts/" class="btn btn-primary">more specific</a>
-                      </div>
-            </div>        
-        </article>
-                <br><br>
-        <article>
+{% extends 'layout.html' %}
+{% block layoutblock %}
+<section id="news"> 
+    <article>
+            <h1>Hot Issue</h1>
+            <h1>May 21st</h1>
                 
-                <div class="card mb-3">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">News title</h5>
-                          <p class="card-text">News Subtitle</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                </article>
-                <article>
-                      <div class="card mb-3">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">News title</h5>
-                          <p class="card-text">News Subtitle</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                </article>
-                <article>
-                      <div class="card mb-3">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">News title</h5>
-                          <p class="card-text">News Subtitle</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-        </article>
-        <br><br><br>
-        </section>
-        
-    <footer></footer>
-</body>
-
-<script>
-        $(document).ready( function() {
-        $("footer").load("/footer");
-        });
-    </script>
-</html>
+            <div class="card" style="width: 18rem;">
+                    <img src="https://lh3.googleusercontent.com/IpOt9B_xBCatW8aBHP1cmRd1VtNoaaxmrI_BnkwU3QQMwihEzFVyPqp8FEJTnwEl5_2sZRDLyidErai1dYzrCaBtrLYPZ2zDqg=w1200-rw" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h2 class="card-title">The Beatles Museum In U.K. Officially Extends An Invite For BTS To Visit</h2>
+                      <p class="card-text">The Beatles Museum In U.K. Officially Extends An Invite For BTS To Visit
+                            They even offered a private tour and a special performance.</p>
+                      
+                    </div>
+                    <a href="https://www.koreaboo.com/news/beatles-museum-uk-officially-extends-invite-bts-visit/" class="btn btn-primary">more specific</a>
+                  </div>
+                  </article>
+                  <br>
+                  <article>
+                  <div class="card" style="width: 18rem;">
+                    <img src="https://lh3.googleusercontent.com/kucmPoVhjRCoMap5ogg6tnJQelfO-W0FaGGpL0Vf6aKtu2cGvpFa2MKU_aLHLDQWzOqgLLtSoS99IRrLlMDpD192S8Dc2xgI=w1200-rw" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h2 class="card-title">BLACKPINK Paid Respects To The Victims Of The Tragedy In Manchester During Their Performance At The Manchester Arena</h2>
+                      <p class="card-text">BLACKPINK did their part to ease the hearts of the victims.</p>
+                      
+                    </div>
+                    <a href="https://www.koreaboo.com/news/blackpink-paid-respects-victims-tragedy-manchester-performance-manchester-arena/" class="btn btn-primary">more specific</a>
+                  </div>
+            </article>
+                  <br>
+                  <article>
+                  <div class="card" style="width: 18rem;">
+                    <img src="https://lh3.googleusercontent.com/m2NvflOpgnEG0VmvMNPpiWyZcbeaDlV2NsWvolIeGFE_LLERYgfNLjqW2AYJFmg6YrW8GfIj5p_AgheynHuYykWnrPWiM2C3=w1200-rw" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h2 class="card-title">The Empire State Building In New York Gets A Purple Makeover Thanks To BTS</h2>
+                      <p class="card-text">New York purples BTS.</p>
+                      
+                    </div>
+                    <a href="https://www.koreaboo.com/news/empire-state-building-new-york-gets-purple-makeover-thanks-bts/" class="btn btn-primary">more specific</a>
+                  </div>
+        </div>        
+    </article>
+            <br><br>
+    <article>
+            
+            <div class="card mb-3">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">News title</h5>
+                      <p class="card-text">News Subtitle</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+            </article>
+            <article>
+                  <div class="card mb-3">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">News title</h5>
+                      <p class="card-text">News Subtitle</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+            </article>
+            <article>
+                  <div class="card mb-3">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">News title</h5>
+                      <p class="card-text">News Subtitle</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+    </article> 
+    </section>
+ 
+{% endblock %}    

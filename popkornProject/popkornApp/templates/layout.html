@@ -1,21 +1,81 @@
-{% load static %}
-
+{% load staticfiles %}  
 <!-- header, footer 합침 -->
 <!DOCTYPE html>
 <html lang="kor">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">   
         <!-- 1. Link to jQuery (1.8 or later), -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB --> 
+        <link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css?{% now 'U' %}"/>
         <!-- fotorama.css & fotorama.js. -->
         <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
         <title>popKorn</title>
+
+        
+        <script>
+            $(function(){  
+                //로그인 팝업 
+                $("#sign_in_btn").click(function(){
+                    $(".bg").show();
+                    $(".pop_up").show(); 
+                }); 
+                $(".close").click(function(){
+                    $(".bg").hide();
+                    $(".pop_up").hide();
+                });
+
+                //로그인창 회원가입창 토글
+                $(".pop_up_f").click(function(){
+                    $("form").toggle();
+                });
+            });
+             
+        </script> 
+ 
     </head>
     <body>
+        <div class="bg"></div>
+        <!-- 로그인 창 팝업 -->
+        <div class="pop_up">  
+            <div class="pop_up_h">
+                <a href="#" class="close">x</a> 
+            </div>
+            <div class="pop_up_con">
+                <!-- 로그인 폼 -->
+                <form action="" id="sign_in">
+                    <h2>Sign in to POPKORN</h2>
+                    <label for="login_user_id">Username</label>
+                    <input type="text" id="login_user_id" required>
+                    <label for="login_user_pw">
+                        <div>
+                            Password
+                            <a href="#">Forgot password?</a> 
+                        </div></label>
+                    <input type="password" id="login_user_pw" required>
+                    <input type="submit" value="SIGN IN" class="btn"> 
+                    <div class="pop_up_f">
+                        <a href="#sing_up">Create an account</a> 
+                    </div>
+                </form>
+                <!-- 회원 가입 폼  -->
+                <form action="" id="sign_up">
+                    <h2>Sign up for POPKORN</h2>
+                    <label for="singup_user_id">Username</label>
+                    <input type="text" id="singup_user_id" required>
+                    <label for="singup_user_em">UserEmail</label>
+                    <input type="text" id="singup_user_em" required>
+                    <label for="singup_user_pw">Password</label>
+                    <input type="password" id="singup_user_pw" required>
+                    <input type="submit" value="SIGN UP for POPKORN" class="btn">
+                    <div class="pop_up_f">
+                        <a href="#sign_in">Do you already have a account?</a>  
+                    </div> 
+                </form>
+            </div>
+        </div>
         <header>
             <strong><a href="/">POPKORN</a></strong>
             <ul>
@@ -25,20 +85,24 @@
                 <li><a href="calendar">CALENDAR</a></li>
                 <li><a href="community">COMMUNITY</a></li>
             </ul>
-            <a href="" class="btn">LOGIN</a>
+            <a href="#" class="btn" id="sign_in_btn">LOGIN</a>
         </header>    
         {% block layoutblock %}
         {% endblock %}    
 
+       
         <footer>
             <p>
-                <strong>31mg</strong><br/>
+                <strong>POPKORN</strong><br/>
                 진호&nbsp;|&nbsp;kartmon@naver.com<br/>
                 주원&nbsp;|&nbsp;seozoo123@gmail.com<br/>
-                정인&nbsp;|&nbsp;alslahdk@naver.com<br/>
-                규리&nbsp;|&nbsp;itshoworld44@gmail.com<br/>
-                동현&nbsp;|&nbsp;<br/>
+                정인&nbsp;|&nbsp;alslahdk@naver.com<br/> 
             </p>
         </footer>
+
+         
+        
+
+       
     </body>
 </html>

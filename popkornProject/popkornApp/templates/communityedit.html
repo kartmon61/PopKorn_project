@@ -1,26 +1,6 @@
-<html>
-    <head>
-        {% load static %}
-        <title>popKorn</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}"/>
-        <!-- 1. Link to jQuery (1.8 or later), -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
-        <!-- fotorama.css & fotorama.js. -->
-        <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
-        <script src="{% static 'scripts/main.js' %}"></script>
-    </head>
-    <script>
-            $(document).ready( function() {
-            $("header").load("/header");
-            });
-        </script>
-    <body>
-        <header></header>
-        <br><br><br><br>
+{% extends 'layout.html' %}
+{% block layoutblock %}
+<section>
             <form action = "/community/update/{{posts.id}}" method="POST">
                 {% csrf_token %}
                 <div>
@@ -35,13 +15,6 @@
                 </div>
                 <br>
                 <button type="submit">수정하기</button>
-            </form>
-            <footer></footer>
-    </body>
-    <script>
-            $(document).ready( function() {
-            $("footer").load("/footer");
-            });
-          </script>
-</html>
-
+            </form> 
+</section>
+{%endblock%}

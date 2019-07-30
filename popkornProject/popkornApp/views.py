@@ -56,7 +56,7 @@ def communitycreate(request):
 
 def communityshow(request,post_id):
     one_post = get_object_or_404(Posting,id=post_id)
-    #coments = one_post.postcoment_set.all()
+#     coments = one_post.postcoment_set.all()
     return render(request,'communityshow.html',{'posts':one_post})
 
 def communityedit(request,post_id):

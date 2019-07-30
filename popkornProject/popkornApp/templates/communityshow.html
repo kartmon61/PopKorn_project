@@ -14,12 +14,14 @@
                 </div>
                 <button type="submit">upload</button>
             </form>
-            {% for coment in coments %}
+            {% for coment in coment %}
             <div>
                 <p>{{coment.content}}</p>
                 <p>{{coment.created_at}}</p>
                 <a href="/community/comentdelete/{{post.id}}/{{coment.id}}">delete</a>
             </div>
             {% endfor %}
+            <a href="/community/edit/{{posts.id}}">edit post</a>
+            <a href="/community/delete/{{posts.id}}">delete post</a>
             <footer></footer>
 {%endblock%}

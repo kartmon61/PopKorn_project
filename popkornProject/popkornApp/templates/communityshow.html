@@ -6,7 +6,8 @@
             <p>{{ posts.content }}</p>
             <a href="/community">Return community</a>
             <br><br>
-            <form action="/community/comentcreate/{{posts.id}}"method="POST">
+
+            <form action="/community/comentcreate/{{post.id}}"method="POST">
                 {% csrf_token %}
                 <div>
                     <label for="coment_content">coments</label>

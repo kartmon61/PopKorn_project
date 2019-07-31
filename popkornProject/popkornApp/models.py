@@ -17,4 +17,4 @@ class Posting(models.Model):
 class PostingComent(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    post = models.ForeignKey(Posting,on_delete=models.CASCADE)
+    posting = models.ForeignKey(Posting,on_delete=models.CASCADE)

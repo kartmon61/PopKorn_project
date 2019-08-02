@@ -1,8 +1,28 @@
 {% extends 'layout.html' %}
 {% block layoutblock %}
 <!-- layout.html include-->
+
+<script>
+    //TODAY'S KPOP RANDOM
+    $(function(){
+        youtube = ["https://www.youtube.com/embed/kOHB85vDuow",
+                   "https://www.youtube.com/embed/aKSxbt-O6TA",
+                   "https://www.youtube.com/embed/zndvqTc4P9I"]
+        src = Math.floor(Math.random() * 3)  
+        $("#today_kpop").attr("src",youtube[src]);
+    });
+</script>
 <section id="index">
     <article>
+        <div>
+            <h3>COMMUNICATE WITH GLOBAL K-POP FANS <br/>ALL OVER THE WORLD</h3>
+            <p>POPKORN is a community made by k for global k-pop fans all over the world.
+                You can get,share all about your K-idol without misunderstating here in POPKORN! 
+            </p>
+        </div>      
+    </article>
+        
+    <!--
         <div class="fotorama" 
                 data-loop = "true"
                 data-autoplay="2000" 
@@ -33,20 +53,62 @@
                         BLACKPINK becomes the most streamed girl group in YouTube history
                     </a>
             </div>
-        </div>        
-    </article>
+        </div>     
+    -->
     <article>
         <div>
-            <p>Real time CHART</p>
-            <div class="chart_container"></div>
+            <p>TODAY'S NEWS</p>
+            <div class="fotorama" 
+                data-loop = "true"
+                data-autoplay="2000" 
+                data-arrows="false"
+                data-keyboard="true"
+                data-width="100%"
+                data-height="450"
+                data-click="false"
+                data-swipe="false"
+                data-nav="false"
+                >
+            <div data-img="https://www.allkpop.com/upload/2019/05/content/190416/btsjpg.jpg"
+                    data-fit="cover">
+                <a href="https://www.allkpop.com/article/2019/05/boy-with-luv-becomes-btss-tenth-music-video-to-surpass-300-million-youtube-views">
+                    'Boy With Luv' becomes BTS's tenth music video to surpass 300 million YouTube views
+                </a>
+            </div>
+            <div data-img="https://www.allkpop.com/upload/2019/05/content/011128/twjpg.jpg"
+                    data-fit="cover">
+                    <a href="https://www.allkpop.com/article/2019/05/twice-announce-their-first-ever-us-tour-dates">
+                    TWICE announce their first-ever U.S tour dates!
+                </a>
+            </div>
+            <div data-img="https://www.allkpop.com/upload/2019/05/content/081710/bpjpg.jpg"
+                    data-fit="cover">
+                    <a href="https://www.allkpop.com/article/2019/05/blackpink-becomes-the-most-streamed-girl-group-in-youtube-history">
+                        BLACKPINK becomes the most streamed girl group in YouTube history
+                    </a>
+            </div>
+        </div>     
+            <!--
+                 <div class="chart_container"> 
+                <iframe src="/melon" width="400px" height="415px" frameborder="0" ></iframe>
+            </div>
+            -->
+           
         </div>
         <div>
-            <p>Today's KPOP</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/XsX3ATc3FbA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>TODAY'S KPOP</p>
+            <iframe width="100%" 
+                    height="450px" 
+                    src="https://www.youtube.com/embed/XsX3ATc3FbA" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen 
+                    id="today_kpop"
+                    ></iframe>
         </div>
     </article>
     <article>
-        <p>Now Hot</p>
+        <p><a href="/community">NOW HOT</a></p>
         <ul>
             <li><i class="list_no">1st</i><a href="#">dsfsdfsdfsdfsdfsdf</a><i class="date">06:23</i></li>
             <li><i class="list_no">2nd</i><a href="#">dsfsdfsdfsdfsdfsdf</a><i class="date">06:23</i></li>

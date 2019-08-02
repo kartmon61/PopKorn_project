@@ -5,7 +5,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">   
+        <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">   -->
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
         <!-- 1. Link to jQuery (1.8 or later), -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB --> 
         <link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css?{% now 'U' %}"/>
@@ -31,6 +32,11 @@
                 $(".pop_up_f").click(function(){
                     $("form").toggle();
                 });
+
+                //로그아웃
+                $("a[href='#logout'").click(function(){
+                    $("#logout").submit();
+                });
             });
              
         </script> 
@@ -45,30 +51,35 @@
             </div>
             <div class="pop_up_con">
                 <!-- 로그인 폼 -->
-                <form action="" id="sign_in">
+                <form action="{% url 'login' %}" method="POST" id="sign_in">
+                    {% csrf_token %}
                     <h2>Sign in to POPKORN</h2>
-                    <label for="login_user_id">Username</label>
-                    <input type="text" id="login_user_id" required>
-                    <label for="login_user_pw">
+                    <label for="login_id">Username</label>
+                    <input type="text" name ="login_id" id="login_id" required>
+                    <label for="login_pw">
                         <div>
                             Password
                             <a href="#">Forgot password?</a> 
                         </div></label>
-                    <input type="password" id="login_user_pw" required>
-                    <input type="submit" value="SIGN IN" class="btn"> 
+                    <input type="password" name="login_pw" id="login_pw" required>
+                    <input type="submit" value="LOGIN" class="btn"> 
                     <div class="pop_up_f">
                         <a href="#sing_up">Create an account</a> 
                     </div>
                 </form>
                 <!-- 회원 가입 폼  -->
-                <form action="" id="sign_up">
+                <form id="sign_up" method="POST" action="{% url 'signup'%}">
+                    {% csrf_token %}
                     <h2>Sign up for POPKORN</h2>
-                    <label for="singup_user_id">Username</label>
-                    <input type="text" id="singup_user_id" required>
-                    <label for="singup_user_em">UserEmail</label>
-                    <input type="text" id="singup_user_em" required>
-                    <label for="singup_user_pw">Password</label>
-                    <input type="password" id="singup_user_pw" required>
+                    <label for="sign_id">Username</label>
+                    <input type="text" name="sign_id" id="sign_id" required>
+
+                    <label for="sign_pw1">Password</label>
+                    <input type="password" name="sign_pw1" id="sign_pw1" required>
+
+                    <label for="sign_pw2">Confirm Password </label>
+                    <input type="password" name="sign_pw2"  id="sign_pw2" required>
+
                     <input type="submit" value="SIGN UP for POPKORN" class="btn">
                     <div class="pop_up_f">
                         <a href="#sign_in">Do you already have a account?</a>  
@@ -85,7 +96,21 @@
                 <li><a href="calendar">CALENDAR</a></li>
                 <li><a href="community">COMMUNITY</a></li>
             </ul>
+            {% if user.is_authenticated %} 
+            <a href="#logout"class="btn">LOGOUT</a>
+            <form action="{% url 'logout'%}" method="post" id="logout">
+                {% csrf_token %}
+                <input type="hidden"/>
+            </form>
+            {% else %}
             <a href="#" class="btn" id="sign_in_btn">LOGIN</a>
+            {% endif %}
+
+            {% if msg %} 
+            <script>
+                alert("{{msg}}"); 
+            </script>
+            {%endif%}
         </header>    
         {% block layoutblock %}
         {% endblock %}    

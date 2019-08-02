@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Posting,PostingComent,Notice
+from django.contrib.auth.models import User
+from django.utils import timezone
+from django.core.paginator import Paginator
+from django.contrib import auth
+
 #관리자 공지사항 Notice 추가 (사용가능)
 
 # Create your views here.
-def header(request):
-    return render(request,'header.html')
-
+ 
 def index(request):
     return render(request,'index.html')
 
-def footer(request):
-    return render(request,'footer.html')
-
+ 
 def news(request):
     return render(request,'news.html')
 
@@ -42,7 +43,11 @@ def calendar(request):
 
 def community(request):
     posts = Posting.objects.all()
-    return render(request,'community.html',{'posts':posts})
+    paginator = Paginator(posts,10) 
+    page = request.GET.get('page') 
+    page_posts = paginator.get_page(page)
+
+    return render(request,'community.html',{'posts':posts,'page_posts':page_posts})
 
 def communitynew(request):
     return render(request,'communitynew.html')
@@ -93,3 +98,48 @@ def comentdelete(request,post_id):
 
 
 #---------------------community--------------------------------#
+
+
+#---------------------------login------------------------------#
+
+def signup(request):
+        if request.method == 'POST':
+                if request.POST['sign_pw1'] == request.POST['sign_pw2']: 
+                        try:
+                                user = User.objects.create_user(
+                                        username=request.POST['sign_id'],
+                                        password=request.POST['sign_pw1'])   
+                                auth.login(request,user) 
+                                print('signup has been completed !')
+                        except :
+                               return redirectForm(request, 'username is already exist')   
+                        return redirect('index')
+                else : 
+                        return redirectForm(request, 'passwords must be matched!') 
+            
+
+ 
+def login(request):
+        if request.method == 'POST':
+                username = request.POST['login_id']
+                password = request.POST['login_pw'] 
+                user = auth.authenticate(request, username=username, password=password) 
+
+                if user is not None:
+                        auth.login(request,user)  
+                        return redirect('index')
+                else: 
+                        return redirectForm(request, 'username or password is incorrect.') 
+        else:
+                return render(request, 'index.html')
+
+
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+    return redirect('index')
+
+ 
+ ############  폼 처리 후 리다이렉션 #######################
+def redirectForm(request,msg):
+        return render(request, 'redirect.html', {'msg': msg}) 

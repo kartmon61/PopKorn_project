@@ -12,9 +12,7 @@ urlpatterns = [
     # /calendar로 링크 들어가면 calendar 화면이 보이게 설정
     # /community로 링크 들어가면 community 화면이 보이게 설정
     
-    path('',views.index,name='index'),
-    path('header',views.header,name='header'),
-    path('footer',views.footer,name='footer'),
+    path('',views.index,name='index'), 
     path('news',views.news,name='news'),
     path('chart',views.chart,name='chart'),
     path('melon',views.chartmelon,name='chartmelon'),
@@ -32,5 +30,8 @@ urlpatterns = [
     path('community/delete/<int:post_id>',views.communitydelete,name='communitydelete'),
     path('community/comentcreate/<int:post_id>',views.comentcreate,name='comentcreate'),
     path('community/comentdelete/<int:post_id>/<int:coment_id>',views.comentdelete,name='comentdelete'),
+    path('signup',views.signup,name='signup'),
+    path('login',views.login,name='login'),
+    path('logout',views.logout,name='logout'), 
 
 ]

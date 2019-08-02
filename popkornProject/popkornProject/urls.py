@@ -18,6 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('popkornApp.urls')),
-    path('data',include('datacrawling.urls')),
+    path('',include('popkornApp.urls')), 
 ]

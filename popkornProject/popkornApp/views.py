@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Posting,PostingComent,Notice
 from django.contrib.auth.models import User
-from django.utils import timezone
+#from django.utils import timezone
+from datetime import datetime 
 from django.core.paginator import Paginator
 from django.contrib import auth
 from urllib.request import urlopen
@@ -10,7 +11,12 @@ from bs4 import BeautifulSoup
 #관리자 공지사항 Notice 추가 (사용가능)
 
 # Create your views here.
+
+def getDate():
+        now = datetime.now() 
  
+        return  '%s.%s.%s' % (now.month, now.day , now.year )
+
 def index(request):
     return render(request,'index.html')
 
@@ -29,8 +35,7 @@ def news(request):
         data["title"] = title
         data["src"] = src   
         datalist.append(data)
-    print(datalist) 
-    return render(request,'news.html',{'data':datalist}) 
+    return render(request,'news.html',{'data':datalist,'now':getDate()}) 
 
 #-----------------chart iframe htmls-----------
 def chart(request):

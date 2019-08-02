@@ -1,14 +1,17 @@
 {% extends 'layout.html' %}
 {% block layoutblock %}
 <section id="news"> 
-  <article>
-    <img src="https://lh3.googleusercontent.com/IpOt9B_xBCatW8aBHP1cmRd1VtNoaaxmrI_BnkwU3QQMwihEzFVyPqp8FEJTnwEl5_2sZRDLyidErai1dYzrCaBtrLYPZ2zDqg=w1200-rw" class="card-img-top" alt="...">
+
+  {% for i in data%}   
+  <a href="{{i.link}}"> 
+    <img src="{{i.src}}" alt="...">
     <div>
-      <p class="news_name">The Beatles Museum In U.K. Officially Extends An Invite For BTS To Visit</p>
-      <p class="news_con">The Beatles Museum In U.K. Officially Extends An Invite For BTS To Visit
-          They even offered a private tour and a special performance.</p>
-    </div>
-  </article>
+      <p>{{i.title}}</p> 
+    </div> 
+  </a> 
+  {%endfor%}
+  
+  
     <!--  
     <article>
             <h1>Hot Issue</h1>

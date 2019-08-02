@@ -414,11 +414,29 @@ section{
  /* 뉴스 */
  #news{ 
      padding:30px 50px;
- }
- #news article{
      display:grid;
-     grid-template-columns: 1fr 1fr; 
+     grid-template-columns: 1fr 1fr 1fr 1fr; 
  }
- #news article img{
-    width:100%; 
- } 
+ #news a{
+     display:block;
+     border:1px solid #eeeeee;
+     border-radius: 10px;  
+     width:90%; 
+     height:300px;
+     margin:10px 10px;
+ }
+ #news a img {
+     width:100%; 
+ }
+ #news a div{
+     padding:15px;
+ }
+ #news a div p:nth-child(1){
+     font-size: 1.1em;
+     font-weight: bold;
+ }
+  
+ #news a div p:nth-child(2){
+    font-size: 0.9em; 
+    color: #555555;
+}

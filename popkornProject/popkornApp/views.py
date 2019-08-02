@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.paginator import Paginator
 from django.contrib import auth
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 
 #관리자 공지사항 Notice 추가 (사용가능)
 
@@ -13,8 +15,22 @@ def index(request):
     return render(request,'index.html')
 
  
-def news(request):
-    return render(request,'news.html')
+def news(request): 
+    html = urlopen("https://www.koreaboo.com/news/")  
+    bsObject = BeautifulSoup(html, "html.parser",from_encoding="utf-8") 
+    obj =bsObject.find_all("article",{"class":"cat-news"})  
+    datalist= []
+    for i,arial in enumerate(obj) :
+        link = arial.select('a')[0].get('href')
+        title = arial.select('a')[0].get('aria-label') 
+        src = arial.select('source')[0].get('data-srcset').split(" ")[0]
+        data = {}
+        data["link"] = link
+        data["title"] = title
+        data["src"] = src   
+        datalist.append(data)
+    print(datalist) 
+    return render(request,'news.html',{'data':datalist}) 
 
 #-----------------chart iframe htmls-----------
 def chart(request):
@@ -143,3 +159,6 @@ def logout(request):
  ############  폼 처리 후 리다이렉션 #######################
 def redirectForm(request,msg):
         return render(request, 'redirect.html', {'msg': msg}) 
+
+
+ 

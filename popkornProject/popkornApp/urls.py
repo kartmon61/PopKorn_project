@@ -1,6 +1,7 @@
 from django.urls import path
 from .import views
 
+
 urlpatterns = [
     # <임시처리>
     # // 첫화면 index 화면이 보이게 설정

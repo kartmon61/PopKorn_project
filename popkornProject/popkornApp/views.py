@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 from django.contrib import auth
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+# from .forms import communitycreate
 
 #관리자 공지사항 Notice 추가 (사용가능)
 

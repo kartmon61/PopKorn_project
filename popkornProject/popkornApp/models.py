@@ -14,7 +14,8 @@ class Posting(models.Model):
     content = models.TextField()
 
 
-class PostingComent(models.Model):
-    content = models.TextField()
+class PostingComment(models.Model):
+    content = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     posting = models.ForeignKey(Posting,on_delete=models.CASCADE)
+

@@ -7,21 +7,22 @@
             <a href="/community">Return community</a>
             <br><br>
 
-            <form action="/community/comentcreate/{{post.id}}"method="POST">
+            <form action="/community/commentcreate/{{posts.id}}"method="POST">
                 {% csrf_token %}
                 <div>
-                    <label for="coment_content">coments</label>
-                    <textarea name="coment_content" id="coment_content" cols="30" rows="1"></textarea>
+                    <label for="comment_content">comments</label>
+                    <textarea name="comment_content" id="comment_content" cols="30" rows="1"></textarea>
                 </div>
-                <button type="submit">upload</button>
+                <button type="submit">upload comment</button>
             </form>
-            {% for coment in coment %}
+            {% for comment in comment %}
             <div>
-                <p>{{coment.content}}</p>
-                <p>{{coment.created_at}}</p>
-                <a href="/community/comentdelete/{{post.id}}/{{coment.id}}">delete</a>
+                <p>{{comment.content}}</p>
+                <p>{{comment.created_at}}</p>
+                <a href="/community/commentdelete/{{posts.id}}/{{comment.id}}" class="comments">delete</a>
             </div>
             {% endfor %}
+
             <a href="/community/edit/{{posts.id}}">edit post</a>
             <a href="/community/delete/{{posts.id}}">delete post</a>
             <footer></footer>

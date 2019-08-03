@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Posting,PostingComment,Notice
 from django.contrib.auth.models import User
+from django.db import IntegrityError
 #from django.utils import timezone
 from datetime import datetime 
 from django.core.paginator import Paginator
@@ -47,6 +48,9 @@ def news(request):
     datalist = getData("https://www.koreaboo.com/news/","news")
     return render(request,'news.html',{'data':datalist,'now':getDate()}) 
 
+def media(request):
+        return render(request,'media.html')
+
 #-----------------chart iframe htmls-----------
 def chart(request):
     return render(request,'chart.html') 
@@ -90,7 +94,7 @@ def communitynew(request):
         else:
                 form = CommunityCreate()
                 return render(request, 'communitynew.html', {'form': form})
-
+ 
 def communitycreate(request):
     new_post = Posting()
     new_post.title = request.POST['title']
@@ -101,7 +105,6 @@ def communitycreate(request):
 def communityshow(request,post_id):
     one_post = get_object_or_404(Posting,id=post_id)
     comments = one_post.postingcomment_set.all()
-
     return render(request,'communityshow.html',{'posts':one_post,'comment':comments})
 
 def communityedit(request,post_id):
@@ -122,6 +125,8 @@ def communitydelete(request,post_id):
     one_post = get_object_or_404(Posting,id=post_id)
     one_post.delete()
     return redirect('/community')
+
+##########################comment #######################################
 
 def commentcreate(request,post_id):
     if(request.method == 'POST'):
@@ -150,8 +155,12 @@ def signup(request):
                                         password=request.POST['sign_pw1'])   
                                 auth.login(request,user) 
                                 print('signup has been completed !')
-                        except :
-                               return redirectForm(request, 'username is already exist')   
+                        except IntegrityError as e:
+                             auth.logout(request)    
+                             return redirectForm(request,'username is already exist')   
+                        except:
+                            auth.logout(request)
+                            return redirectForm(request,'error!')   
                         return redirect('index')
                 else : 
                         return redirectForm(request, 'passwords must be matched!') 

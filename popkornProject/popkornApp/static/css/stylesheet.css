@@ -341,16 +341,14 @@ header li a:hover, .nav_active{
 }
 
 /*커뮤니티 페이지*/
-#community section{
+#community{
     padding:20px; 
     height:100%;
 }
 
-#community div{  
-    height:450px;
-    padding:30px 5px;
-    margin-bottom: 30px; 
-    text-align:center;
+#community div{    
+    height:500px;
+    text-align:center; 
 }
 #community div p{
     margin-top:15%;
@@ -362,20 +360,35 @@ header li a:hover, .nav_active{
     width:90%;
     margin:auto;
     list-style:none;  
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee; 
+    text-align: left; 
 }
 .list li{
-    display:inline-block;
+    display:inline-block;   
 }
-
+.list li:nth-child(1){
+    float:left; 
+    width:3%;
+    text-align:center;  
+    margin-left:-30px;
+}
 .list li:nth-child(2){
-    width:80%;
-    margin-left:30px;
+    width:80%;  
+    margin-left:15px;
 } 
-.list li a{
-    display: block;
-    margin-bottom:15px;
+.list li:nth-child(3){
+    width:15%; 
+    float:right; 
+    margin-right:-30px;
 }
+.list li:nth-child(3) i{
+    display:block;
+    width:100%;
+    text-align:left;
+}
+ 
+ 
+ 
 
 #community .btn{
     background-color: #5e52a1;
@@ -384,6 +397,7 @@ header li a:hover, .nav_active{
     float:right;   
     margin-right:30px;
     margin-top:30px;
+    margin-bottom:30px;
 }
 #community .btn:hover{
     background-color: #483f7a;

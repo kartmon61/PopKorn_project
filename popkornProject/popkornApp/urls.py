@@ -21,6 +21,7 @@ urlpatterns = [
     path('mnet',views.chartmnet,name='chartmnet'),
     path('buks',views.chartbuks,name='chartbuks'),
     path('calendar',views.calendar,name='calendar'),
+    path('media',views.media,name='media'),
     path('community',views.community,name='community'),
     path('community/new',views.communitynew,name='communitynew'),
     path('community/create',views.communitycreate,name='communitycreate'),

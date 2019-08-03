@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'popkornApp.apps.PopkornappConfig', 
-    'media.apps.MediaConfig',
+    'popkornApp.apps.PopkornappConfig',  
     'ckeditor',
     'ckeditor_uploader'
 ]

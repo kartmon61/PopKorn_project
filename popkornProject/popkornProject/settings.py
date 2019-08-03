@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'popkornApp.apps.PopkornappConfig', 
-    'media.apps.MediaConfig'
+    'media.apps.MediaConfig',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,3 +131,5 @@ STATIC_URL = '/static/'
 #) 
 STATIC_DIR = [os.path.join(BASE_DIR, 'popkornApp', 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

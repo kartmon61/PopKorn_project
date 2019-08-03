@@ -1,6 +1,7 @@
 from django.urls import path
 from .import views
 
+
 urlpatterns = [
     # <임시처리>
     # // 첫화면 index 화면이 보이게 설정
@@ -27,8 +28,8 @@ urlpatterns = [
     path('community/edit/<int:post_id>',views.communityedit,name='communityedit'),
     path('community/update/<int:post_id>',views.communityupdate,name='communityupdate'),
     path('community/delete/<int:post_id>',views.communitydelete,name='communitydelete'),
-    path('community/comentcreate/<int:post_id>',views.comentcreate,name='comentcreate'),
-    path('community/comentdelete/<int:post_id>/<int:coment_id>',views.comentdelete,name='comentdelete'),
+    path('community/commentcreate/<int:post_id>',views.commentcreate,name='commentcreate'),
+    path('community/commentdelete/<int:post_id>/<int:comment_id>',views.commentdelete,name='commentdelete'),
     path('signup',views.signup,name='signup'),
     path('login',views.login,name='login'),
     path('logout',views.logout,name='logout'), 

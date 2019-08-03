@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Posting,PostingComent,Notice
+from .models import Posting,PostingComment,Notice
 from django.contrib.auth.models import User
 #from django.utils import timezone
 from datetime import datetime 
@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 from django.contrib import auth
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+from .forms import CommunityCreate
 
 #관리자 공지사항 Notice 추가 (사용가능)
 
@@ -79,7 +80,16 @@ def community(request):
     return render(request,'community.html',{'posts':posts,'page_posts':page_posts})
 
 def communitynew(request):
-    return render(request,'communitynew.html')
+        if request.method == 'POST':
+                form = CommunityCreate(request.POST)
+                if form.is_valid():
+                        form.save()
+                        return redirect('community')
+                else:
+                        return redirect('index')
+        else:
+                form = CommunityCreate()
+                return render(request, 'communitynew.html', {'form': form})
 
 def communitycreate(request):
     new_post = Posting()
@@ -90,9 +100,9 @@ def communitycreate(request):
 
 def communityshow(request,post_id):
     one_post = get_object_or_404(Posting,id=post_id)
+    comments = one_post.postingcomment_set.all()
 
-#     coments = one_post.postcoment_set.all()
-    return render(request,'communityshow.html',{'posts':one_post})
+    return render(request,'communityshow.html',{'posts':one_post,'comment':comments})
 
 def communityedit(request,post_id):
     one_post = get_object_or_404(Posting,id=post_id)
@@ -113,16 +123,16 @@ def communitydelete(request,post_id):
     one_post.delete()
     return redirect('/community')
 
-def comentcreate(request,post_id):
+def commentcreate(request,post_id):
     if(request.method == 'POST'):
         one_post = get_object_or_404(Posting,id=post_id)
-        one_post.postcoment_set.create(content=request.POST['coment_content'])
+        one_post.postingcomment_set.create(content=request.POST['comment_content'])
     return redirect('/community/show/'+str(post_id))
 
-def comentdelete(request,post_id):
+def commentdelete(request,post_id,comment_id):
 
-    one_coment = get_object_or_404(PostingComent,id=coment_id,post=post_id)
-    one_coment.delete()
+    one_comment = get_object_or_404(PostingComment,id=comment_id,posting=post_id)
+    one_comment.delete()
     return redirect('/community/show/'+str(post_id))
 
 

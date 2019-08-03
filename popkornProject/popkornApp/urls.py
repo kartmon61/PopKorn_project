@@ -19,7 +19,6 @@ urlpatterns = [
     path('gini',views.chartgini,name='chartgini'),
     path('mnet',views.chartmnet,name='chartmnet'),
     path('buks',views.chartbuks,name='chartbuks'),
-    path('media',views.media,name='media'),
     path('calendar',views.calendar,name='calendar'),
     path('community',views.community,name='community'),
     path('community/new',views.communitynew,name='communitynew'),

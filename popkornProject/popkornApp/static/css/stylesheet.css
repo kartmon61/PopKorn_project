@@ -261,13 +261,13 @@ header li a:hover, .nav_active{
     padding:50px;
 } 
 .fotorama div{
-    width:90%;
+    width:80%;
     height:100%; 
 }
 .fotorama a{    
     z-index: 1;
     display:block;
-    width:100%;
+    width:110%;
     height:30px;
     margin-left:-100px;
     padding:50px 50px; 
@@ -286,7 +286,7 @@ header li a:hover, .nav_active{
     font-size: 1em;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow:hidden;
+    overflow:hidden; 
 }
 .fotorama a:hover{
     background-color:rgba(6, 1, 31, 0.575); 
@@ -296,6 +296,7 @@ header li a:hover, .nav_active{
     display:grid;
     grid-template-columns: 1fr 1fr; 
 } 
+ 
 #index ul{
     display:block;
     width:95%; 

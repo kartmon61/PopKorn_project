@@ -9,7 +9,8 @@
                    "https://www.youtube.com/embed/aKSxbt-O6TA",
                    "https://www.youtube.com/embed/zndvqTc4P9I"]
         src = Math.floor(Math.random() * 3)  
-        $("#today_kpop").attr("src",youtube[src]);
+        $("#today_kpop").attr("src",youtube[src]); 
+ 
     });
 </script>
 <section id="index">
@@ -58,42 +59,26 @@
     <article>
         <div>
             <p>TODAY'S NEWS</p>
-            <div class="fotorama" 
-                data-loop = "true"
-                data-autoplay="2000" 
-                data-arrows="false"
-                data-keyboard="true"
-                data-width="100%"
-                data-height="450"
-                data-click="false"
-                data-swipe="false"
-                data-nav="false"
-                >
-            <div data-img="https://thumb.pann.com/tc_480/https://fimg4.pann.com/new/download.jsp?FileID=49533564"
+                <div class="fotorama" 
+                    data-loop = "true"
+                    data-autoplay="2000" 
+                    data-arrows="false"
+                    data-keyboard="true"
+                    data-width="100%"
+                    data-height="450"
+                    data-click="false"
+                    data-swipe="false"
+                    data-nav="false"
+                    > 
+                    {% for i in data%}
+                    <div data-img="{{i.src}}"
                     data-fit="cover">
-                <a href="https://www.allkpop.com/article/2019/05/boy-with-luv-becomes-btss-tenth-music-video-to-surpass-300-million-youtube-views">
-                    <p>'Boy With Luv' becomes BTS's tenth music video to surpass 300 million YouTube views</p>
-                </a>
-            </div>
-            <div data-img="https://www.allkpop.com/upload/2019/05/content/011128/twjpg.jpg"
-                    data-fit="cover">
-                    <a href="https://www.allkpop.com/article/2019/05/twice-announce-their-first-ever-us-tour-dates">
-                        <p>TWICE announce their first-ever U.S tour dates!</p>
-                </a>
-            </div>
-            <div data-img="https://www.allkpop.com/upload/2019/05/content/081710/bpjpg.jpg"
-                    data-fit="cover">
-                    <a href="https://www.allkpop.com/article/2019/05/blackpink-becomes-the-most-streamed-girl-group-in-youtube-history">
-                        <p>BLACKPINK becomes the most streamed girl group in YouTube history</p>
-                    </a>
-            </div>
-        </div>     
-            <!--
-                 <div class="chart_container"> 
-                <iframe src="/melon" width="400px" height="415px" frameborder="0" ></iframe>
-            </div>
-            -->
-           
+                        <a href="{{i.link}}">
+                            <p>{{i.title}}</p>
+                        </a>
+                    </div>
+                    {%endfor%} 
+                </div>
         </div>
         <div>
             <p>TODAY'S KPOP</p>

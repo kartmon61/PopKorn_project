@@ -17,24 +17,33 @@ def getDate():
  
         return  '%s.%s.%s' % (now.month, now.day , now.year )
 
+#### https://www.koreaboo.com 기준으로 데이터 가져옴 ####
+def getData(url,path):
+        html = urlopen(url)
+        bsObject = BeautifulSoup(html, "html.parser",from_encoding="utf-8") 
+        obj =bsObject.find_all("article",{"class":"cat-news"})  
+        datalist= []
+        try:
+                for arial in obj :
+                        link = arial.select('a')[0].get('href')
+                        title = arial.select('a')[0].get('aria-label') 
+                        src = arial.select('source')[0].get('data-srcset').split(" ")[0]
+                        data = {}
+                        data["link"] = link
+                        data["title"] = title
+                        data["src"] = src    
+                        datalist.append(data)
+        except:
+                redirect(path)
+        return datalist
+
 def index(request):
-    return render(request,'index.html')
+    datalist = getData("https://www.koreaboo.com/news/","index") 
+    return render(request,'index.html',{'data':datalist})
 
  
-def news(request): 
-    html = urlopen("https://www.koreaboo.com/news/")  
-    bsObject = BeautifulSoup(html, "html.parser",from_encoding="utf-8") 
-    obj =bsObject.find_all("article",{"class":"cat-news"})  
-    datalist= []
-    for i,arial in enumerate(obj) :
-        link = arial.select('a')[0].get('href')
-        title = arial.select('a')[0].get('aria-label') 
-        src = arial.select('source')[0].get('data-srcset').split(" ")[0]
-        data = {}
-        data["link"] = link
-        data["title"] = title
-        data["src"] = src   
-        datalist.append(data)
+def news(request):  
+    datalist = getData("https://www.koreaboo.com/news/","news")
     return render(request,'news.html',{'data':datalist,'now':getDate()}) 
 
 #-----------------chart iframe htmls-----------
@@ -53,8 +62,7 @@ def chartbuks(request):
 def chartmnet(request):
     return render(request,'mnet.html')    
 #----------------------------------------------
-def media(request):
-    return render(request,'media.html')
+
 
 def calendar(request):
     return render(request,'calendar.html')

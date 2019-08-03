@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 from django.contrib import auth
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-# from .forms import communitycreate
+from .forms import CommunityCreate
 
 #관리자 공지사항 Notice 추가 (사용가능)
 
@@ -72,7 +72,16 @@ def community(request):
     return render(request,'community.html',{'posts':posts,'page_posts':page_posts})
 
 def communitynew(request):
-    return render(request,'communitynew.html')
+        if request.method == 'POST':
+                form = CommunityCreate(request.POST)
+                if form.is_valid():
+                        form.save()
+                        return redirect('community')
+                else:
+                        return redirect('index')
+        else:
+                form = CommunityCreate()
+                return render(request, 'communitynew.html', {'form': form})
 
 def communitycreate(request):
     new_post = Posting()

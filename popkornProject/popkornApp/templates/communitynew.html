@@ -1,20 +1,16 @@
 {% extends 'layout.html' %}
 {% block layoutblock %}
 
-
 <section id="comm_write">
-    <form action="/community/create" method="post">
+        <h1>Posting</h1>
+        <hr>
+        <br><br>
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <div>
-                <label for="title">제목</label><br>
-                <input type="text" name="title" id="title" required>
-            </div>
-            <div>
-                <label for="content">내용</label><br>
-                <textarea name="content" id="content" cols="30" rows="10" required></textarea>
-            </div>
-            <input type="submit" value="글쓰기">
-    </form>
+            {{ form.media }}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-dark" value="저장"/>
+        </form>
 </section>
 
 {% endblock %}

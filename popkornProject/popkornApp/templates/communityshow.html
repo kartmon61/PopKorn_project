@@ -1,9 +1,11 @@
 {% extends 'layout.html' %}
 {% block layoutblock %}
 
-            <h2>({{ posts.id }}) {{ posts.title }}</h2>
-            <p>{{ posts.created_at }}</p>
-            <p>{{ posts.content }}</p>
+            <h2>Title : ({{ posts.id }}) {{ posts.title }}</h2>
+            <p>Created time : {{ posts.created_at }}</p>
+            <h4>ID : {{ posts.author }}</h4>
+            <br>
+            <p>{{ posts.content | safe }}</p>
             <a href="/community">Return community</a>
             <br><br>
 

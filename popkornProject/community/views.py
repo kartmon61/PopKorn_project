@@ -29,17 +29,30 @@ def communitycreate(request):
     new_post.title = request.POST['title']
     new_post.content = request.POST['content']
     new_post.save()
-    return redirect('')
+    return redirect('/community')
 
 def communityshow(request,post_id):
     one_post = get_object_or_404(Posting,id=post_id)
     comments = one_post.postingcomment_set.all()
     return render(request,'communityshow.html',{'posts':one_post,'comment':comments})
 
-def communityedit(request,post_id):
-    one_post = get_object_or_404(Posting,id=post_id)
-
-    return render(request,'communityedit.html',{'posts':one_post})
+def communityedit(request, post_id):
+    if request.method == "POST":
+        #수정 저장
+        one_post = Posting.objects.get(pk = post_id)
+        form = CommunityCreate(request.POST, instance=one_post)
+        if form.is_valid():
+             form.save()
+             return redirect('/community/show/'+str(one_post.id))
+    else:
+        #수정 입력
+        one_post = Posting.objects.get(pk = post_id)
+        # if one_post.author == User.objects.get(username = request.user.get_username()):
+        one_post = Posting.objects.get(pk = post_id)
+        form = CommunityCreate(instance = one_post)
+        return render(request, 'communityedit.html', {'posts' : one_post, 'form' : form})
+        # else:
+                # return render(request, '/communitywarning.html')
 
 def communityupdate(request,post_id):
     if(request.method == 'POST'):
@@ -53,7 +66,7 @@ def communityupdate(request,post_id):
 def communitydelete(request,post_id):
     one_post = get_object_or_404(Posting,id=post_id)
     one_post.delete()
-    return redirect('')
+    return redirect('/community')
 
 ##########################comment #######################################
 
@@ -64,6 +77,10 @@ def commentcreate(request,post_id):
     return redirect('/community/show/'+str(post_id))
 
 def commentdelete(request,post_id,comment_id):
+
     one_comment = get_object_or_404(PostingComment,id=comment_id,posting=post_id)
     one_comment.delete()
     return redirect('/community/show/'+str(post_id))
+
+
+

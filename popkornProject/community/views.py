@@ -7,7 +7,7 @@ from .forms import CommunityCreate
 def community(request):
     posts = Posting.objects.all()
     paginator = Paginator(posts,10) 
-    page = request.GET.get('page') 
+    page = request.GET.get('page')
     page_posts = paginator.get_page(page)
 
     return render(request,'community.html',{'posts':posts,'page_posts':page_posts})

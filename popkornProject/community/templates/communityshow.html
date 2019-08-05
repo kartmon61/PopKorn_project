@@ -1,31 +1,41 @@
 {% extends 'layout.html' %}
 {% block layoutblock %}
-
-            <h2>Title : ({{ posts.id }}) {{ posts.title }}</h2>
-            <p>Created time : {{ posts.created_at }}</p>
-            <h4>ID : {{ posts.author }}</h4>
-            <br>
-            <p>{{ posts.content | safe }}</p>
-            <a href="/community">Return community</a>
-            <br><br>
-
-            <form action="/community/commentcreate/{{posts.id}}"method="POST">
-                {% csrf_token %}
-                <div>
-                    <label for="comment_content">comments</label>
-                    <textarea name="comment_content" id="comment_content" cols="30" rows="1"></textarea>
-                </div>
-                <button type="submit">upload comment</button>
-            </form>
-            {% for comment in comment %}
+<section id="community_detail">
+    <ul>
+        <li><a href="/community/show/{{posts.id}}">{{ posts.title }}</a></li>
+        <li>
             <div>
-                <p>{{comment.content}}</p>
-                <p>{{comment.created_at}}</p>
-                <a href="/community/commentdelete/{{posts.id}}/{{comment.id}}" class="comments">delete</a>
+                <a href="/community/edit/{{posts.id}}" class="btn">EDIT</a>
+                <a href="/community/delete/{{posts.id}}" class="btn">DELETE</a>
             </div>
-            {% endfor %}
+        </li>
+    </ul>
+    <ul>
+        <li class="date">{{ posts.author }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li>
+        <li class="date">{{ posts.created_at }}</li>
+        <li></li>
+    </ul>
+    <p>{{ posts.content | safe }}</p> 
 
-            <a href="/community/edit/{{posts.id}}">edit post</a>
-            <a href="/community/delete/{{posts.id}}">delete post</a>
-            <footer></footer>
+    <form action="/community/commentcreate/{{posts.id}}"method="POST">
+        {% csrf_token %} 
+        <textarea name="comment_content" 
+                  id="comment_content" 
+                  cols="30" rows="5" 
+                  placeholder="comment"
+                  class="input_"></textarea>
+        <input type="submit" class="btn input_" value="CONFIRM">
+    </form>
+    {% for comment in comment %}
+    <div class="list"> 
+        <div>
+            <p class="date"><strong>{{comment.author}}</strong></p> 
+            <p class="date">{{comment.created_at}}</p> 
+        </div>
+        <p>{{comment.content}}</p>
+        <a href="/community/commentdelete/{{posts.id}}/{{comment.id}}">delete</a>
+    </div>
+    {% endfor %}
+
+  </section>
 {%endblock%}

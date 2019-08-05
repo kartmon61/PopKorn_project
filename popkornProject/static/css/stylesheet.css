@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap'); 
 @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300&display=swap');
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 *{
-    font-family: 'Alegreya Sans SC', sans-serif;
+    font-family: 'Alegreya Sans SC', 'Nanum Gothic', sans-serif;
     --basic-br-color:#eeeeee; /*기본 border 색깔 변수*/
     --basic-txt-color:#383838;/*기본 글자 색깔 변수*/ 
 }

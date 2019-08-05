@@ -15,7 +15,7 @@ urlpatterns = [
     
     path('',views.index,name='index'), 
     path('news',views.news,name='news'),
-    path('chart',views.chart,name='chart'),
+    path('chart/',views.chart,name='chart'),
     path('melon',views.chartmelon,name='chartmelon'),
     path('gini',views.chartgini,name='chartgini'),
     path('mnet',views.chartmnet,name='chartmnet'),

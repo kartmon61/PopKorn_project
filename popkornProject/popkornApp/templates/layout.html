@@ -40,13 +40,11 @@
 
                 function nav_active(){
                     var locate = location.pathname; 
-                    locate =locate.replace("/","");
+                    locate =locate.replace(/\//gi,"");
                     $("a").removeClass("nav_active");
-                    $("a[href='"+locate+"'").attr("class","nav_active");
-
+                    $("a[href='../"+locate+"'").attr("class","nav_active"); 
                 } 
                 nav_active();
-                
             });
              
         </script> 
@@ -65,14 +63,14 @@
                     {% csrf_token %}
                     <h2>Sign in to POPKORN</h2>
                     <label for="login_id">Username</label>
-                    <input type="text" name ="login_id" id="login_id" required>
+                    <input type="text" name ="login_id" id="login_id" class="input_" required>
                     <label for="login_pw">
                         <div>
                             Password
                             <a href="#">Forgot password?</a> 
                         </div></label>
-                    <input type="password" name="login_pw" id="login_pw" required>
-                    <input type="submit" value="LOGIN" class="btn"> 
+                    <input type="password" name="login_pw" id="login_pw" class="input_" required>
+                    <input type="submit" value="LOGIN" class="btn input_"> 
                     <div class="pop_up_f">
                         <a href="#sing_up">Create an account</a> 
                     </div>
@@ -82,15 +80,15 @@
                     {% csrf_token %}
                     <h2>Sign up for POPKORN</h2>
                     <label for="sign_id">Username</label>
-                    <input type="text" name="sign_id" id="sign_id" required>
+                    <input type="text" name="sign_id" id="sign_id" class="input_" required>
 
                     <label for="sign_pw1">Password</label>
-                    <input type="password" name="sign_pw1" id="sign_pw1" required>
+                    <input type="password" name="sign_pw1" id="sign_pw1" class="input_" required>
 
                     <label for="sign_pw2">Confirm Password </label>
-                    <input type="password" name="sign_pw2"  id="sign_pw2" required>
+                    <input type="password" name="sign_pw2"  id="sign_pw2" class="input_" required>
 
-                    <input type="submit" value="SIGN UP for POPKORN" class="btn">
+                    <input type="submit" value="SIGN UP for POPKORN" class="btn input_">
                     <div class="pop_up_f">
                         <a href="#sign_in">Do you already have a account?</a>  
                     </div> 
@@ -100,11 +98,11 @@
         <header>
             <strong><a href="/">POPKORN</a></strong>
             <ul>
-                <li><a href="news" class="nav_active">NEWS</a></li>
-                <li><a href="chart" >CHART</a></li>
-                <li><a href="media">MEDIA</a></li>
-                <li><a href="calendar">CALENDAR</a></li>
-                <li><a href="community">COMMUNITY</a></li>
+                <li><a href="/news" class="nav_active">NEWS</a></li>
+                <li><a href="/chart" >CHART</a></li>
+                <li><a href="/media">MEDIA</a></li>
+                <li><a href="/calendar">CALENDAR</a></li>
+                <li><a href="/community">COMMUNITY</a></li>
             </ul>
             {% if user.is_authenticated %} 
             <a href="#logout"class="btn">LOGOUT</a>

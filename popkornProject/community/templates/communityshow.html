@@ -1,12 +1,21 @@
 {% extends 'layout.html' %}
 {% block layoutblock %}
+<script>
+    $(function(){
+        $(".delete").click(function(){
+            if(confirm("Really delete this?")){
+                location.href=$(this).attr("url");
+            }
+        });
+    });
+</script>
 <section id="community_detail">
     <ul>
         <li><a href="/community/show/{{posts.id}}">{{ posts.title }}</a></li>
         <li>
             <div>
-                <a href="/community/edit/{{posts.id}}" class="btn">EDIT</a>
-                <a href="/community/delete/{{posts.id}}" class="btn">DELETE</a>
+                <a href="/community/edit/{{posts.id}}" class="btn purple">EDIT</a>
+                <a href="#" url ="/community/delete/{{posts.id}}" class="btn delete purple">DELETE</a>
             </div>
         </li>
     </ul>
@@ -17,7 +26,7 @@
     </ul>
     <p>{{ posts.content | safe }}</p> 
 
-    <form action="/community/commentcreate/{{posts.id}}"method="POST">
+    <form action="/community/commentcreate/{{posts.id}}" method="POST">
         {% csrf_token %} 
         <textarea name="comment_content" 
                   id="comment_content" 
@@ -33,7 +42,7 @@
             <p class="date">{{comment.created_at}}</p> 
         </div>
         <p>{{comment.content}}</p>
-        <a href="/community/commentdelete/{{posts.id}}/{{comment.id}}">delete</a>
+        <a href="#" url="/community/commentdelete/{{posts.id}}/{{comment.id}}" class="delete">delete</a>
     </div>
     {% endfor %}
 

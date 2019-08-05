@@ -9,6 +9,6 @@ urlpatterns = [
     path('edit/<int:post_id>',views.communityedit,name='edit'),
     path('update/<int:post_id>',views.communityupdate,name='update'),
     path('delete/<int:post_id>',views.communitydelete,name='delete'),
-    path('comentcreate/<int:post_id>',views.commentcreate,name='comentcreate'),
-    path('comentdelete/<int:post_id>/<int:coment_id>',views.commentdelete,name='comentdelete'),
+    path('commentcreate/<int:post_id>',views.commentcreate,name='comentcreate'),
+    path('commentdelete/<int:post_id>/<int:comment_id>',views.commentdelete,name='comentdelete'),
 ]

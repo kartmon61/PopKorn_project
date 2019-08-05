@@ -29,7 +29,7 @@ def communitycreate(request):
     new_post.title = request.POST['title']
     new_post.content = request.POST['content']
     new_post.save()
-    return redirect('/community')
+    return redirect('')
 
 def communityshow(request,post_id):
     one_post = get_object_or_404(Posting,id=post_id)
@@ -53,7 +53,7 @@ def communityupdate(request,post_id):
 def communitydelete(request,post_id):
     one_post = get_object_or_404(Posting,id=post_id)
     one_post.delete()
-    return redirect('/community')
+    return redirect('')
 
 ##########################comment #######################################
 
@@ -64,7 +64,6 @@ def commentcreate(request,post_id):
     return redirect('/community/show/'+str(post_id))
 
 def commentdelete(request,post_id,comment_id):
-
     one_comment = get_object_or_404(PostingComment,id=comment_id,posting=post_id)
     one_comment.delete()
     return redirect('/community/show/'+str(post_id))

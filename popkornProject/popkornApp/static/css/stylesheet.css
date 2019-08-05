@@ -176,6 +176,7 @@ footer strong{
 section{
     display:block;
     margin-top:51px; 
+    padding:30px 10px;
 }
 
 /*클래스*/
@@ -235,6 +236,13 @@ header li a:hover, .nav_active{
     border-radius: 3px;
     padding:10px;
 
+}
+.purple{
+    background: #5e52a1;
+    color:#ffffff;
+}
+.purple:hover{
+    background: #3c3466;
 }
 /*인덱스 페이지*/
 
@@ -399,19 +407,13 @@ header li a:hover, .nav_active{
  
  
 
-#community .btn{
-    background-color: #5e52a1;
-    font-size: 0.8em;
-    color: #ffffff;
+#community .btn{ 
+    font-size: 0.8em; 
     float:right;   
     margin-right:30px;
     margin-top:30px;
     margin-bottom:30px;
-}
-#community .btn:hover{
-    background-color: #483f7a;
-
-}
+} 
 #community_detail{
     padding:30px 10px;
     
@@ -435,14 +437,7 @@ header li a:hover, .nav_active{
 #community_detail ul:nth-child(1) li:nth-child(2){
     float:right; 
     margin-top:-20px; 
-}
-#community_detail ul:nth-child(1) li:nth-child(2) .btn{
-    color:#ffffff;
-    background: #5e52a1; 
-}
-#community_detail ul:nth-child(1) li:nth-child(2) .btn:hover{
-    background: #3c3466;
-}
+} 
 #community_detail .date{
     float:left;
     font-size: 0.8em; 
@@ -487,6 +482,21 @@ header li a:hover, .nav_active{
 }
 #community_detail .list a:hover{
     color: #5a5a5a;
+}
+#comm_write h1{
+    margin-left:15%;
+}
+#comm_write form{
+    width:90%;
+    margin-left:15%;
+    display:block; 
+}
+#comm_write form .btn{
+    width:30%; 
+    display:block; 
+    margin-left:21%;
+    font-size: 1em;
+    padding:15px 10px;
 }
 /* 차트 */
 

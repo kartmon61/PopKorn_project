@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('popkornApp.urls')),
     path('community/',include('community.urls')), 
+    path('media/',include('mediaboard.urls')), 
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

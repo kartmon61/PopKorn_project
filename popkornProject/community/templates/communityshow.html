@@ -13,7 +13,12 @@
 <section id="community_detail">
         
     <ul>
-        <li><a href="/community/show/{{posts.id}}">{{ posts.title }}</a></li>
+        <li>
+            <a href="/community/show/{{posts.id}}">{{ posts.title }}</a>
+            {% if posts.postingcomment_set.count != 0 %}
+            <i class="comm_cnt">{{posts.postingcomment_set.count}}</i>
+            {%endif%}
+        </li>
         <li>
             <div>
                 <a href="/community/edit/{{posts.id}}" class="btn purple">EDIT</a>
@@ -23,8 +28,8 @@
     </ul>
     <ul>
         <li class="date">{{ posts.author }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li>
-        <li class="date">{{ posts.created_at }}</li>
-        <li class="date">hits - {{posts.post_hit}}</li>
+        <li class="date">{{posts.created_at | date:"f d Y" }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li>
+        <li class="date">views {{ posts.post_hit }}</li> 
     </ul>
     <p>{{ posts.content | safe }}</p> 
 
@@ -39,7 +44,12 @@
         <input type="submit" class="btn input_" value="CONFIRM">
         <input type="hidden" value="{{user.username}}" name="comm_nm">
     </form> 
-     
+    
+    {% if comment.author != user.username  %} 
+        <script>
+                $("li>div").hide();
+        </script>
+    {%endif%}
     {% if not user.is_authenticated %}    
         <script>
             $("textarea").attr("placeholder","Only members can write comment");
@@ -56,7 +66,10 @@
             <p class="date">{{comment.created_at}}</p> 
         </div>
         <p>{{comment.content}}</p>
+        <!--댓글 작성자랑 아이디 같을 때만 삭제 버튼 보이게 함-->
+        {% if comment.author == user.username  %}
         <a href="#" url="/community/commentdelete/{{posts.id}}/{{comment.id}}" class="delete">delete</a>
+        {%endif%}
     </div>
     {% endfor %}
 

@@ -1,6 +1,16 @@
 {% extends 'layout.html' %}
 {% block layoutblock %}
 
+<script>
+  $(function(){
+    $("tr").click(function(){
+      if($(this).attr("path")){
+        location.href=$(this).attr("path");
+      }
+  });
+
+  });
+</script>
 <section id="community"> 
   {% if user.is_authenticated %} 
   <a href="/community/new" class="btn purple">WRITE</a>
@@ -9,6 +19,34 @@
     <a href="/community/edit/{{post.id}}" class="btn btn-secondary btn-lg enable" tabindex="-1" role="button" aria-disabled="true">Modify</a>
                 <a href="/community/delete/{{post.id}}" class="btn btn-secondary btn-lg enable" tabindex="-1" role="button" aria-disabled="true">Delete</a>
   -->
+  <table> 
+      <tr>
+        <td>no</td>
+        <td></td>
+        <td>writer</td>
+        <td>hit</td>
+        <td>date</td>
+      </tr>
+        {%if posts %}
+          {% for post in page_posts %}
+            <tr path="/community/show/{{post.id}}"> 
+              <td>{{post.id}}</td>
+              <td>
+                  {{post.title}}
+                  {% if post.postingcomment_set.count != 0 %}
+                  <i class="comm_cnt">{{post.postingcomment_set.count}}</i>
+                  {%endif%}
+              </td>
+              <td>{{post.author}}</td>
+              <td>{{post.post_hit}}</td>
+              <td>{{post.created_at | date:"f  d Y" }}</td> 
+            </tr>
+          {% endfor %}
+        {%else%}
+            <td>There isn't any post yet</td>
+          {%endif%}
+    </table>
+    <!--
     <div>
       {%if posts %}
         {% for post in page_posts %}
@@ -32,6 +70,7 @@
         <p>There isn't any post yet</p>
       {%endif%}
     </div>
+    -->
     <ul class="paging">
         {%if page_posts.has_previous%}
           <li><a href="?page={{page_posts.previous_page_number}}">&lt;</a></li>

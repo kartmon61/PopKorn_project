@@ -25,7 +25,6 @@ urlpatterns = [
     path('calendar7',views.calendar7,name='calendar7'),
     path('calendar9',views.calendar9,name='calendar9'),
     path('calendar10',views.calendar10,name='calendar10'),
-    path('media',views.media,name='media'),
     path('signup',views.signup,name='signup'),
     path('login',views.login,name='login'),
     path('logout',views.logout,name='logout'), 

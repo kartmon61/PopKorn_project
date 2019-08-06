@@ -35,5 +35,5 @@ class PostingComment(models.Model):
     content = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     posting = models.ForeignKey(Posting,on_delete=models.CASCADE)
-    author = models.ForeignKey(User,on_delete=True,null=True,default=1)
+    author = models.CharField(max_length=200,null=True,default=1)
 

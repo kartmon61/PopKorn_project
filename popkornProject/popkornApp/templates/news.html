@@ -3,14 +3,88 @@
 <section id="news">   
   <h1>TODAY'S NEWS <br/>{{now}}</h1>
   <article>
-    {% for i in data%}   
-    <a href="{{i.link}}"> 
-      <img src="{{i.src}}" alt="...">
+    {% if data is not none%}
+      {% for i in data%}   
+      <a href="{{i.link}}"> 
+        <img src="{{i.src}}" alt="...">
+        <div>
+          <p>{{i.title}}</p> 
+        </div> 
+      </a> 
+      {%endfor%}
+    {%else%}
+    <!--데이터 로딩 실패할 경우 임시 방편-->
+    <a href="https://www.koreaboo.com/news/park-jimin-reveals-left-jyp-entertainment-regrets/"> 
+      <img src="https://lh3.googleusercontent.com/qsQ1R_y6-ANs3oDua6gVIorzeY_Y00XBIsY_YDFBRD-TVmwv62v-FbYez6oNz4Wak0BSynCsrJ1CII0UsXa9ZS_g3ec-bI2n=w196-rw" alt="...">
       <div>
-        <p>{{i.title}}</p> 
+        <p>Park Jimin Reveals Why She Left JYP Entertainment And Her Regrets</p> 
       </div> 
     </a> 
-    {%endfor%}
+       
+    <a href="https://www.koreaboo.com/news/bts-attended-private-screening-bring-soul-movie/"> 
+      <img src="https://lh3.googleusercontent.com/M5BPee6t1g3nPkpDFczF2hPx09n0U4taJ0SBh6sOm8GwdDJOblgTpqujNloEEATLlwS05yvj91F7PhRSoKoZvK5nJU46aTTz4g=w196-rw" alt="...">
+      <div>
+        <p>BTS Attend A Private Screening For “Bring The Soul: The Movie”</p> 
+      </div> 
+    </a> 
+       
+    <a href="https://www.koreaboo.com/news/exo-kyungsoo-d-o-passion-cooking-military-fans-couldnt-happier/"> 
+      <img src="https://lh3.googleusercontent.com/iOHAt5PGdSVu6dYwocOaoQHtQMmA4jQjsoV2s0JnNenutNFih8I8f348rOuMROghGMNYHTv64D4VJTTHI3h6GTQQFZSDlvL5BQ=w196-rw" alt="...">
+      <div>
+        <p>EXO’s D.O. Will Be Using His Passion For Cooking In The Military And Fans Couldn’t Be Happier For Him</p> 
+      </div> 
+    </a> 
+       
+    <a href="https://www.koreaboo.com/news/blackpinks-jisoo-red-velvets-seulgi-cutest-interaction-instagram-making-fans-want-black-velvet-collaboration/"> 
+      <img src="https://lh3.googleusercontent.com/SqK0vWdyhO1It0oqq3VsjOWsHpdzPUYqD4gPaGQggjAlkvXhAdVigqUtMwYMJeG9ceHWeNA6nnkAY4XCzOyctfJoC7QjbWyoOA=w196-rw" alt="...">
+      <div>
+        <p>BLACKPINK’s Jisoo And Red Velvet’s Seulgi Have The Cutest Interaction On Instagram And It Is Making Fans Want A Black Velvet Collaboration</p> 
+      </div> 
+    </a> 
+       
+    <a href="https://www.koreaboo.com/news/got7s-jackson-reveals-finally-achieved-childhood-dream/"> 
+      <img src="https://lh3.googleusercontent.com/MgSPAhj_ULmxXRWAv2SAAjcoKrRxbt99Nnbe0x7o73-mSPO9QdrOpEfgVGzQm9-2kVbQXvJwCItvEyd0DZbhgJ18olQpdGo-=w196-rw" alt="...">
+      <div>
+        <p>GOT7’s Jackson Reveals That He Has Finally Achieved His Childhood Dream</p> 
+      </div> 
+    </a> 
+       
+    <a href="https://www.koreaboo.com/news/irene-proved-best-leader-made-sure-promote-red-velvet-new-solo-song-released/"> 
+      <img src="https://lh3.googleusercontent.com/2ooxmgN6WyoD5-1NOxqfF7MqFiKcQ81GwBPZwci3eeg0wwnOY-aKOMoowqpUDzlvl5kUxMbd0uyP5WjeeF1Qy1CJH8aB6gS2=w196-rw" alt="...">
+      <div>
+        <p>Irene Proved She Was The Best Leader When She Made Sure To Promote Red Velvet When Her New Solo Song Was Released</p> 
+      </div> 
+    </a> 
+       
+    <a href="https://www.koreaboo.com/news/seventeens-hit-ranks-high-charts-1-19-different-countries/"> 
+      <img src="https://lh3.googleusercontent.com/6M6UuWqN3znMcjl8lsjirG1qwNj-Ff2NVJzCW6Rei9xsUwptJRgC0Q0Llin238T3gq7l567CK2WY2NU72WNZkMzCX0VtDft4sw=w196-rw" alt="...">
+      <div>
+        <p>SEVENTEEN’s “HIT” Ranks High, Charts At #1 In 19 Different Countries</p> 
+      </div> 
+    </a> 
+       
+    <a href="https://www.koreaboo.com/news/produce-101-season-2-contestant-lee-gwanghyun-left-starship-entertainment/"> 
+      <img src="https://lh3.googleusercontent.com/WP4toOnvsdyiQITR_pHuaeAxo4RawjkIeMswOAreSnz1Bc1J0oLBwSXVovt7GVx4pu4Si2I0GRqENOYB6KBNPJxURL6FB1qU=w196-rw" alt="...">
+      <div>
+        <p>“Produce 101 Season 2” Contestant Lee Gwanghyun Has Left Starship Entertainment</p> 
+      </div> 
+    </a> 
+       
+    <a href="https://www.koreaboo.com/news/konnect-entertainment-will-taking-legal-action-malicious-comments-made-towards-kang-daniel/"> 
+      <img src="https://lh3.googleusercontent.com/qevzS90RWa8JtDDP4x4vmrf-ZvWmTRLTFYfWKRzGeCKlvMUhJZUHnWn9duNDCZG6Ksw-IKOmQI1soKsidb282qd1p9aWMudWS1w=w196-rw" alt="...">
+      <div>
+        <p>KONNECT Entertainment Will Be Taking Legal Action Against Malicious Comments Made Towards Kang Daniel</p> 
+      </div> 
+    </a> 
+       
+    <a href="https://www.koreaboo.com/news/kang-daniels-song-drops-melon-real-time-chart-following-dating-news/"> 
+      <img src="https://lh3.googleusercontent.com/xaiWeGrVWYnSDGsQf1KTBZS_D3vCP48MBwc2pwh0BpqlSgoUuPv2tHGarqa1VjRsRyTM3hRnGaP6p0zfcL0obVtLHq39GpXdAA=w196-rw" alt="...">
+      <div>
+        <p>Kang Daniel’s Song “What are you up to” Drops From The MelOn Real Time Chart Following Dating News</p> 
+      </div> 
+    </a> 
+    {%endif%}
+ 
   </article>
     </section>
  

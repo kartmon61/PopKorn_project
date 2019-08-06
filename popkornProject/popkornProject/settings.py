@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'community.apps.CommunityConfig',
+    'mediaboard.apps.MediaboardConfig',
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"

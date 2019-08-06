@@ -45,8 +45,7 @@ def news(request):
     datalist = getData("https://www.koreaboo.com/news/","news")
     return render(request,'news.html',{'data':datalist,'now':getDate()}) 
 
-def media(request):
-        return render(request,'media.html')
+
 
 #-----------------chart iframe htmls-----------
 def chart(request):
@@ -62,8 +61,7 @@ def chartbuks(request):
     return render(request,'buks.html')
 
 def chartmnet(request):
-    return render(request,'mnet.html')    
-#-------------------------------------------------------------#
+    return render(request,'mnet.html')     
 
 #--------------------calendar---------------------------------#
 

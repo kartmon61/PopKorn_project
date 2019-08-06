@@ -19,6 +19,7 @@
         <script>
             $(function(){  
                 var locate = location.pathname; 
+                console.log(locate);
                 $("red_path").val("/"+locate);
                 locate =locate.replace(/\//gi,"");
 
@@ -39,7 +40,9 @@
 
                 //로그아웃
                 $("a[href='#logout'").click(function(){
-                    $("#logout").submit();
+                    if(confirm("Really want to leave?")){
+                        $("#logout").submit();
+                    }
                 });
 
                 function nav_active(){
@@ -51,6 +54,7 @@
                 $("header>p").hover(function(){ 
                     $("ul[no='2']").show();
                 },function(){
+                    $("ul[no='2']").show();
                     $("ul[no='2']").hover(function(){
                         $(this).show();
 

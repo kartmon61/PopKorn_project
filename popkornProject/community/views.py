@@ -84,7 +84,7 @@ def communitydelete(request, post_id):
 def commentcreate(request,post_id):
     if(request.method == 'POST'):
         one_post = get_object_or_404(Posting,id=post_id)
-        one_post.postingcomment_set.create(content=request.POST['comment_content'])
+        one_post.postingcomment_set.create(content=request.POST['comment_content'],author=request.POST['comm_nm'])
     return redirect('/community/show/'+str(post_id))
 
 def commentdelete(request,post_id,comment_id):

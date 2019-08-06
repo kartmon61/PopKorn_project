@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block layoutblock %}
+
+<section id="media">
+        {% if user.is_authenticated %} 
+        <a href="/community/new" class="btn purple right">WRITE</a>
+        {%endif%}
+        <article>
+            <div class="media-title">
+                    <a href="#" class="tag">BTS)</a>
+                    BTS (방탄소년단) '작은 것들을 위한 시 (Boy With Luv) feat. Halsey' Official MV
+                    <p>2019.05.20</p>
+            </div>
+            <iframe width="80%"
+                    src="https://www.youtube.com/embed/XsX3ATc3FbA" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </article> 
+ 
+        <div class="pop_up">
+                <div class="pop_up_h">
+                        <a href="#" class="close">x</a> 
+                </div>
+                <div class="pop_up_con">
+                        <h2>Share your k-pop youtube</h2>
+                        <form action="" method="POST">
+                                {% csrf_token %}
+                                <select class="input_">       
+                                        <option>1</option>
+                                        <option>1</option>
+                                        <option>1</option>
+                                        <option>1</option>
+                                </select>
+                                <input type="text" placeholder="title" class="input_" name="m_title" required>
+                                <textarea name="m_content"  
+                                        cols="30" rows="5" 
+                                        placeholder="Embed Video"
+                                        required
+                                        class="input_"></textarea>
+                                <input type="submit" value="POST" class="btn purple">
+                        </form>
+                </div>
+        </div>
+        <ul class="paging">
+            <li><a href="#">&lt;</a></li>
+            <li><a href="#" class="active">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&gt;</a></li>
+        </ul>
+    </section>
+{% endblock %}

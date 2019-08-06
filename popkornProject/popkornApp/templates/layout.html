@@ -18,6 +18,10 @@
         
         <script>
             $(function(){  
+                var locate = location.pathname; 
+                $("red_path").val("/"+locate);
+                locate =locate.replace(/\//gi,"");
+
                 //로그인 팝업 
                 $("#sign_in_btn").click(function(){
                     $(".bg").show();
@@ -39,12 +43,22 @@
                 });
 
                 function nav_active(){
-                    var locate = location.pathname; 
-                    locate =locate.replace(/\//gi,"");
                     $("a").removeClass("nav_active");
                     $("a[href='../"+locate+"'").attr("class","nav_active"); 
-                } 
+                }
                 nav_active();
+
+                $("header>p").hover(function(){ 
+                    $("ul[no='2']").show();
+                },function(){
+                    $("ul[no='2']").hover(function(){
+                        $(this).show();
+
+                    },function(){
+                        $(this).hide();
+                    })
+                });
+                
             });
              
         </script> 
@@ -71,6 +85,7 @@
                         </div></label>
                     <input type="password" name="login_pw" id="login_pw" class="input_" required>
                     <input type="submit" value="LOGIN" class="btn input_"> 
+                    <input type="hidden" name="red_path" class="red_path">
                     <div class="pop_up_f">
                         <a href="#sing_up">Create an account</a> 
                     </div>
@@ -89,6 +104,7 @@
                     <input type="password" name="sign_pw2"  id="sign_pw2" class="input_" required>
 
                     <input type="submit" value="SIGN UP for POPKORN" class="btn input_">
+                    <input type="hidden" name="red_path" class="red_path">
                     <div class="pop_up_f">
                         <a href="#sign_in">Do you already have a account?</a>  
                     </div> 
@@ -97,7 +113,7 @@
         </div>
         <header>
             <strong><a href="/">POPKORN</a></strong>
-            <ul>
+            <ul no="1">
                 <li><a href="/news" class="nav_active">NEWS</a></li>
                 <li><a href="/chart" >CHART</a></li>
                 <li><a href="/media">MEDIA</a></li>
@@ -105,20 +121,26 @@
                 <li><a href="/community">COMMUNITY</a></li>
             </ul>
             {% if user.is_authenticated %} 
-            <a href="#logout"class="btn">LOGOUT</a>
-            <form action="{% url 'logout'%}" method="post" id="logout">
-                {% csrf_token %}
-                <input type="hidden"/>
-            </form>
-            {% else %}
-            <a href="#" class="btn" id="sign_in_btn">LOGIN</a>
-            {% endif %}
-
-            {% if msg %} 
-            <script>
-                alert("{{msg}}"); 
-            </script>
-            {%endif%}
+            <P>
+                welcome &nbsp;&nbsp; 
+                <b>{{user.username}}</b>
+                <a href="#" class="msg_total">5</a>
+            </P>
+            <ul no="2"> 
+                <li>
+                    <a href="#logout">LOGOUT</a>
+                    <form action="{% url 'logout'%}" method="post" id="logout">
+                        {% csrf_token %}
+                        <input type="hidden" name="red_path" class="red_path">
+                    </form>
+                </li>
+                <li>
+                    <a href="#">MESSAGE</a>
+                </li>
+                {% else %}
+                <a href="#" class="btn" id="sign_in_btn">LOGIN</a>
+                {% endif %}
+            </div>
         </header>    
         {% block layoutblock %}
         {% endblock %}    
@@ -130,7 +152,10 @@
                 진호&nbsp;|&nbsp;kartmon@naver.com<br/>
                 주원&nbsp;|&nbsp;seozoo123@gmail.com<br/>
                 정인&nbsp;|&nbsp;alslahdk@naver.com<br/> 
+                
             </p>
+             
+            
         </footer>
 
          

@@ -26,6 +26,7 @@
     </ul>
     <p>{{ posts.content | safe }}</p> 
 
+    
     <form action="/community/commentcreate/{{posts.id}}" method="POST">
         {% csrf_token %} 
         <textarea name="comment_content" 
@@ -34,7 +35,18 @@
                   placeholder="comment"
                   class="input_"></textarea>
         <input type="submit" class="btn input_" value="CONFIRM">
-    </form>
+        <input type="hidden" value="{{user.username}}" name="comm_nm">
+    </form> 
+     
+    {% if not user.is_authenticated %}    
+        <script>
+            $("textarea").attr("placeholder","Only members can write comment");
+            $("input[type='submit']").addClass("d");
+            $("#community_detail .input_").prop("disabled",true);   
+            $("li>div").hide();
+        </script>
+    {%endif%}
+
     {% for comment in comment %}
     <div class="list"> 
         <div>

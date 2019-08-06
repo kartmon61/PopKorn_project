@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block layoutblock %}
 <section id="news">   
-  <h1>{{now}}</h1>
+  <h1>TODAY'S NEWS <br/>{{now}}</h1>
   <article>
     {% for i in data%}   
     <a href="{{i.link}}"> 

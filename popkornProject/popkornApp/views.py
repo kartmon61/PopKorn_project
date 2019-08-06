@@ -13,17 +13,18 @@ from bs4 import BeautifulSoup
 
 def getDate():
         now = datetime.now() 
- 
         return  '%s.%s.%s' % (now.month, now.day , now.year )
 
 #### https://www.koreaboo.com 기준으로 데이터 가져옴 ####
 def getData(url,path):
-        html = urlopen(url)
-        bsObject = BeautifulSoup(html, "html.parser",from_encoding="utf-8") 
+        response = urlopen(url)
+        html = response.read().decode(encoding="iso-8859-1")
+        bsObject = BeautifulSoup(html, 'html.parser')
+        #html = urlopen(url)
+        #bsObject = BeautifulSoup(html, "html.parser",from_encoding="utf-8") 
         obj =bsObject.find_all("article",{"class":"cat-news"})  
         datalist= []
-        try:
-                for arial in obj :
+        for arial in obj :
                         link = arial.select('a')[0].get('href')
                         title = arial.select('a')[0].get('aria-label') 
                         src = arial.select('source')[0].get('data-srcset').split(" ")[0]
@@ -32,8 +33,7 @@ def getData(url,path):
                         data["title"] = title
                         data["src"] = src    
                         datalist.append(data)
-        except:
-                redirect(path)
+       
         return datalist
 
 def index(request):
@@ -75,6 +75,7 @@ def calendar(request):
 #---------------------------login------------------------------#
 
 def signup(request):
+        red_path = request.POST['red_path']
         if request.method == 'POST':
                 if request.POST['sign_pw1'] == request.POST['sign_pw2']: 
                         try:
@@ -85,17 +86,18 @@ def signup(request):
                                 print('signup has been completed !')
                         except IntegrityError as e:
                              auth.logout(request)    
-                             return redirectForm(request,'username is already exist')   
+                             return redirectForm(request,{'msg':'username is already exist','red_path':red_path})   
                         except:
                             auth.logout(request)
                             return redirectForm(request,'error!')   
-                        return redirect('index')
+                        return redirect(red_path)
                 else : 
-                        return redirectForm(request, 'passwords must be matched!') 
+                        return redirectForm(request, {'msg':'passwords must be matched!','red_path':red_path}) 
             
 
  
 def login(request):
+        red_path = request.POST['red_path'] 
         if request.method == 'POST':
                 username = request.POST['login_id']
                 password = request.POST['login_pw'] 
@@ -103,22 +105,23 @@ def login(request):
 
                 if user is not None:
                         auth.login(request,user)  
-                        return redirect('index')
+                        return redirect(red_path)
                 else: 
-                        return redirectForm(request, 'username or password is incorrect.') 
+                        return redirectForm(request, {'msg':'username or password is incorrect.','red_path':red_path}) 
         else:
                 return render(request, 'index.html')
 
 
 def logout(request):
-    if request.method == 'POST':
-        auth.logout(request)
-    return redirect('index')
+        red_path = request.POST['red_path']
+        if request.method == 'POST':
+                auth.logout(request)
+        return redirect('index')
 
  
  ############  폼 처리 후 리다이렉션 #######################
-def redirectForm(request,msg):
-        return render(request, 'redirect.html', {'msg': msg}) 
+def redirectForm(request,dir):
+        return render(request, 'redirect.html', {'msg': dir.msg,'url':dir.red_path}) 
 
 
  

@@ -2,7 +2,9 @@
 {% block layoutblock %}
 
 <section id="community"> 
-  <a href="/community/new" class="btn">WRITE</a>
+  {% if user.is_authenticated %} 
+  <a href="/community/new" class="btn purple">WRITE</a>
+  {%endif%}
   <!--
     <a href="/community/edit/{{post.id}}" class="btn btn-secondary btn-lg enable" tabindex="-1" role="button" aria-disabled="true">Modify</a>
                 <a href="/community/delete/{{post.id}}" class="btn btn-secondary btn-lg enable" tabindex="-1" role="button" aria-disabled="true">Delete</a>
@@ -13,7 +15,11 @@
         <a href="/community/show/{{post.id}}">
           <ul class="list">
             <li>{{ post.id }}</li>
-            <li>{{post.title}} ( {{post.postingcomment_set.count}} )</li>
+            <li>{{post.title}}
+              {% if post.postingcomment_set.count != 0 %}
+              <i>{{post.postingcomment_set.count}}</i>
+              {%endif%}
+            </li>
             <li>
               <i class="date">{{ post.author }} </i><br/>
               <i class="date">{{post.created_at}}</i>

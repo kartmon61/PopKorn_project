@@ -52,7 +52,13 @@ header{
     padding:20px 0px;
     font-size:0.8em;
 }
-
+header p{
+    display:block;
+    float:right;
+    width:10%;
+    font-size: 1.2em;
+    margin-top:-20px; 
+}
 header ul{
     display:block;
     margin:auto;
@@ -64,6 +70,32 @@ header li{
     margin:0px 20px;
 }
 
+header ul[no="2"]{
+    width:5%;
+    float:right;
+    margin-right: -55px;
+    border-radius: 3px;
+    display:none;
+}
+
+header ul[no="2"] li{
+    width:100%;
+    display:block;
+    padding:10px;
+    border: 1px solid #eeeeee;
+    background: #ffffff;
+}
+header ul[no="2"] li:nth-child(1){
+    border-bottom: 0px;
+}
+header ul[no="2"] li a{
+    width:100%;
+    display:block;
+    text-align: center
+}
+header ul[no="2"] li:hover{
+    background: #f1f1f1;
+}
 header strong{
     float:left;
     margin-left:50px;
@@ -176,11 +208,27 @@ footer strong{
 section{
     display:block;
     margin-top:51px; 
-    padding:30px 10px;
+    padding:30px 0px;
 }
 
-/*클래스*/
-header li a:hover, .nav_active{ 
+/*클래스*/ 
+.block{
+    background: #585858;
+}  
+.msg_total {
+    display:block;
+    background: #ff0000;
+    color:#fff;
+    font-size: 0.7em;
+    font-weight: bold;
+    border-radius: 100%;  
+    padding:1px 5px;
+    position: absolute;
+    text-align: center;
+    top:6px;
+    right:15px;
+}
+header ul[no="1"] a:hover, .nav_active{ 
     background-color: #483f7a77;
     color:#ffffff;
     border-radius: 10px;
@@ -237,6 +285,10 @@ header li a:hover, .nav_active{
     padding:10px;
 
 }
+.d{
+    background-color:#f1f1f1;
+
+}
 .purple{
     background: #5e52a1;
     color:#ffffff;
@@ -245,7 +297,9 @@ header li a:hover, .nav_active{
     background: #3c3466;
 }
 /*인덱스 페이지*/
-
+#index{
+    padding:0px;
+}
 #index article{
     display: block;
     border-bottom: 1px solid var(--basic-br-color);  
@@ -401,12 +455,17 @@ header li a:hover, .nav_active{
     display:block;
     width:100%;
     text-align:left;
-    margin-top:-5px;
+    margin-top:-5px; 
 }
  
  
  
-
+#community .list li:nth-child(2) i:nth-child(1){
+    font-size: 0.9em;
+    color: #ff6600;
+    font-style: normal;
+    margin-left:10px;  
+}
 #community .btn{ 
     font-size: 0.8em; 
     float:right;   
@@ -454,7 +513,7 @@ header li a:hover, .nav_active{
     width:100%; 
     font-size: 1.1em;
 }
-#community_detail form .input_:nth-child(3){
+#community_detail form .input_:nth-child(3){ 
     width:102%;
     border-top:0px;
 }
@@ -483,15 +542,18 @@ header li a:hover, .nav_active{
 #community_detail .list a:hover{
     color: #5a5a5a;
 }
-#comm_write h1{
+.comm_write {
+    padding-bottom: 30px;
+}
+.comm_write h1{
     margin-left:15%;
 }
-#comm_write form{
+.comm_write form{
     width:90%;
     margin-left:15%;
     display:block; 
 }
-#comm_write form .btn{
+.comm_write form .btn{
     width:30%; 
     display:block; 
     margin-left:21%;

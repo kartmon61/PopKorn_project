@@ -80,7 +80,6 @@
     background: #f5f5f5;
     color: #666;
     }
-
     #container{
         display:flex;
     }
@@ -118,6 +117,11 @@
     }
 </style>
 
+<script>
+function nothing(){
+    alert("WE HAVE NO NEXT-MONTH'S SCHEDULE");
+}
+</script>
 
 <section id="calendar-wrap">
 
@@ -125,15 +129,15 @@
     <div id="container">
 
         <div id="button_left">
-            <button><a href="calendar7">prev</a></button>
+            <button><a href="calendar9">prev</a></button>
         </div>
         
         <div id="month_title">
-            <h1>August 2019</h1>
+            <h1>October 2019</h1>
         </div>
         
         <div id="button_right">
-            <button><a href="calendar9">next</a></button>
+            <button onclick="nothing()">next</button>
         </div>
 
     </div>
@@ -149,55 +153,42 @@
                 <li>Friday</li>
                 <li>Saturday</li>
             </ul>
-            <!-- Days from previous month -->
+
             <ul class="days">
                 <li class="day other-month">
-                    <div class="date">28</div>                      
+                    <div class="date">29</div>                      
                 </li>
                 <li class="day other-month">
-                    <div class="date">29</div>
+                    <div class="date">30</div>                    
+                </li>
+                <!-- Days in current month -->
+                <li class="day">
+                    <div class="date">1</div>                      
+                </li>
+                <li class="day">
+                    <div class="date">2</div>                      
+                </li>
+                <li class="day">
+                    <div class="date">3</div>                      
+                </li>
+                
+                <li class="day">
+                    <div class="date">4</div>
                     <div class="event">
                         <div class="event-desc">
-                            BTS Broadcasting in USA 
+                            B2B 정일훈's BRITHDAY!!
                         </div>
                         <div class="event-time">
-                            1:00pm to 3:00pm
+                            00:00am to 11:59pm
                         </div>
-                    </div>                
-                </li>
-                <li class="day other-month">
-                    <div class="date">30</div>                      
-                </li>
-                <li class="day other-month">
-                    <div class="date">31</div>                      
-                </li>
-                  <!-- Days in current month -->
-                <li class="day">
-                    <div class="date">1</div>
-                    <div class="event">
-                        <div class="event-desc">
-                            NewestW 3RD
-                        </div>
-                        <div class="event-time">
-                            5:00pm to 10:00pm
-                        </div>
-                    </div>                            
+                    </div>                             
                 </li>
                 <li class="day">
-                    <div class="date">2</div>                       
-                </li>
-                <li class="day">
-                    <div class="date">3</div>             
+                    <div class="date">5</div>       
                 </li>
             </ul>
                 <!-- Row #2 -->
             <ul class="days">
-                <li class="day">
-                    <div class="date">4</div>                       
-                </li>
-                <li class="day">
-                    <div class="date">5</div>                       
-                </li>
                 <li class="day">
                     <div class="date">6</div>                       
                 </li>
@@ -205,63 +196,46 @@
                     <div class="date">7</div>                       
                 </li>
                 <li class="day">
-                    <div class="date">8</div>         
+                    <div class="date">8</div>                       
                 </li>
                 <li class="day">
-                    <div class="date">9</div>
-                    <div class="event">
-                        <div class="event-desc">
-                            DAY6 WORLD TOUR in SEOUL
-                        </div>
-                        <div class="event-time">
-                            8:00pm to 11:59pm
-                        </div>
-                    </div>                                
+                    <div class="date">9</div>                       
                 </li>
                 <li class="day">
-                    <div class="date">10</div>                       
+                    <div class="date">10</div>                 
+                </li>
+                <li class="day">
+                    <div class="date">11</div>                       
+                </li>
+                <li class="day">
+                    <div class="date">12</div>                       
                 </li>
             </ul>
                 <!-- Row #3 -->
             <ul class="days">
                 <li class="day">
-                    <div class="date">11</div>                      
-                </li>
-                <li class="day">
-                    <div class="date">12</div>                      
-                </li>
-                <li class="day">
-                    <div class="date">13</div>
-                    <div class="event">
-                        <div class="event-desc">
-                            IZ SUMMER LIVE in JAPAN
-                        </div>
-                        <div class="event-time">
-                            2:00pm to 8:00pm
-                        </div>
-                    </div>                      
+                    <div class="date">13</div>                      
                 </li>
                 <li class="day">
                     <div class="date">14</div>                      
                 </li>
                 <li class="day">
-                    <div class="date">15</div>
+                    <div class="date">15</div>                      
                 </li>
                 <li class="day">
                     <div class="date">16</div>                      
                 </li>
                 <li class="day">
-                    <div class="date">17</div>                      
-                </li>
-            </ul>
-                <!-- Row #4 -->
-            <ul class="days">
+                    <div class="date">17</div>
                 <li class="day">
                     <div class="date">18</div>                      
                 </li>
                 <li class="day">
                     <div class="date">19</div>                      
                 </li>
+            </ul>
+                <!-- Row #4 -->
+            <ul class="days">
                 <li class="day">
                     <div class="date">20</div>                      
                 </li>
@@ -272,33 +246,25 @@
                     <div class="date">22</div>                      
                 </li>
                 <li class="day">
-                    <div class="date">23</div>                    
+                    <div class="date">23</div>                      
                 </li>
                 <li class="day">
                     <div class="date">24</div>                      
+                </li>
+                <li class="day">
+                    <div class="date">25</div>                     
+                </li>
+                <li class="day">
+                    <div class="date">26</div>                      
                 </li>
             </ul>
                     <!-- Row #5 -->
             <ul class="days">
                 <li class="day">
-                    <div class="date">25</div>
-                    <div class="event">
-                        <div class="event-desc">
-                            EXO REY SOLO CONCERT in Bangkok
-                        </div>
-                        <div class="event-time">
-                            5:00pm to 11:59pm
-                        </div>
-                    </div>                      
-                </li>
-                <li class="day">
-                    <div class="date">26</div>                 
-                </li>
-                <li class="day">
                     <div class="date">27</div>                      
                 </li>
                 <li class="day">
-                    <div class="date">28</div>                      
+                    <div class="date">28</div>
                 </li>
                 <li class="day">
                     <div class="date">29</div>                      
@@ -309,20 +275,20 @@
                 <li class="day">
                     <div class="date">31</div>                      
                 </li>
-            </ul>
-            <!-- Row #6 -->
-            <ul class="days">
                 <li class="day other-month">
                     <div class="date">1</div>                      
                 </li>
                 <li class="day other-month">
-                    <div class="date">2</div> <!-- Next Month -->                       
+                    <div class="date">2</div>                      
+                </li>
+            </ul>
+            <!-- Row #6 -->
+            <ul class="days">
+                <li class="day other-month">
+                    <div class="date">3</div>                      
                 </li>
                 <li class="day other-month">
-                    <div class="date">3</div>                       
-                </li>
-                <li class="day other-month">
-                    <div class="date">4</div>                       
+                    <div class="date">4</div> <!-- Next Month -->                       
                 </li>
                 <li class="day other-month">
                     <div class="date">5</div>                       
@@ -332,6 +298,12 @@
                 </li>
                 <li class="day other-month">
                     <div class="date">7</div>                       
+                </li>
+                <li class="day other-month">
+                    <div class="date">8</div>                       
+                </li>
+                <li class="day other-month">
+                    <div class="date">9</div>                       
                 </li>
             </ul>
         </div><!-- /. calendar -->

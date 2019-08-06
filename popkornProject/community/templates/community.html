@@ -16,7 +16,8 @@
             <li>{{post.title}} ( {{post.postingcomment_set.count}} )</li>
             <li>
               <i class="date">{{ post.author }} </i><br/>
-              <i class="date">{{post.created_at}}</i>
+              <i class="date">{{post.created_at}}</i><br/>
+              <i class="date">hits - {{post.post_hit}}</i>
             </li> 
           </ul>   
         </a>    

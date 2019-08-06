@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 {% block layoutblock %}
+
 <script>
     $(function(){
         $(".delete").click(function(){
@@ -10,6 +11,7 @@
     });
 </script>
 <section id="community_detail">
+        {{posts.update_counter}}
     <ul>
         <li><a href="/community/show/{{posts.id}}">{{ posts.title }}</a></li>
         <li>
@@ -22,7 +24,7 @@
     <ul>
         <li class="date">{{ posts.author }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li>
         <li class="date">{{ posts.created_at }}</li>
-        <li></li>
+        <li class="date">hits - {{posts.post_hit}}</li>
     </ul>
     <p>{{ posts.content | safe }}</p> 
 

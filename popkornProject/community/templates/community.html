@@ -13,10 +13,11 @@
         <a href="/community/show/{{post.id}}">
           <ul class="list">
             <li>{{ post.id }}</li>
-            <li>{{post.title}}</li>
+            <li>{{post.title}} ( {{post.postingcomment_set.count}} )</li>
             <li>
               <i class="date">{{ post.author }} </i><br/>
-              <i class="date">{{post.created_at}}</i>
+              <i class="date">{{post.created_at}}</i><br/>
+              <i class="date">hits - {{post.post_hit}}</i>
             </li> 
           </ul>   
         </a>    

@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% block layoutblock %}
+{{posts.update_counter}}
+<script>
+    $(function(){
+        $(".delete").click(function(){
+            if(confirm("Really delete this?")){
+                location.href=$(this).attr("url");
+            }
+        });
+    });
+</script>
+<section id="community_detail">
+        
+    <ul>
+        <li><a href="/community/show/{{posts.id}}">{{ posts.title }}</a></li>
+        <li>
+            <div>
+                <a href="/community/edit/{{posts.id}}" class="btn purple">EDIT</a>
+                <a href="#" url ="/community/delete/{{posts.id}}" class="btn delete purple">DELETE</a>
+            </div>
+        </li>
+    </ul>
+    <ul>
+        <li class="date">{{ posts.author }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li>
+        <li class="date">{{ posts.created_at }}</li>
+        <li class="date">hits - {{posts.post_hit}}</li>
+    </ul>
+    <p>{{ posts.content | safe }}</p> 
+
+    <form action="/community/commentcreate/{{posts.id}}" method="POST">
+        {% csrf_token %} 
+        <textarea name="comment_content" 
+                  id="comment_content" 
+                  cols="30" rows="5" 
+                  placeholder="comment"
+                  class="input_"></textarea>
+        <input type="submit" class="btn input_" value="CONFIRM">
+    </form>
+    {% for comment in comment %}
+    <div class="list"> 
+        <div>
+            <p class="date"><strong>{{comment.author}}</strong></p> 
+            <p class="date">{{comment.created_at}}</p> 
+        </div>
+        <p>{{comment.content}}</p>
+        <a href="#" url="/community/commentdelete/{{posts.id}}/{{comment.id}}" class="delete">delete</a>
+    </div>
+    {% endfor %}
+
+  </section>
+{%endblock%}

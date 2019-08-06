@@ -10,7 +10,7 @@ class CommunityCreate(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
+                attrs={'class': 'form-control input_', 'style': 'width: 69%; display:inline; font-size:1em;', 'placeholder': 'TITLE'}
             ),
             'author': forms.Select(
                 attrs={'class': 'custom-select'},

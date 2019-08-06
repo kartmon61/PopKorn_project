@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'popkornApp.apps.PopkornappConfig',  
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'community.apps.CommunityConfig',
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"

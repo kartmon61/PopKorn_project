@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Posting,PostingComment,Notice 
+from django.contrib.auth.models import User
 from .forms import CommunityCreate
+
 
 # Create your views here.
 def community(request):
@@ -47,12 +49,12 @@ def communityedit(request, post_id):
     else:
         #수정 입력
         one_post = Posting.objects.get(pk = post_id)
-        # if one_post.author == User.objects.get(username = request.user.get_username()):
-        one_post = Posting.objects.get(pk = post_id)
-        form = CommunityCreate(instance = one_post)
-        return render(request, 'communityedit.html', {'posts' : one_post, 'form' : form})
-        # else:
-                # return render(request, '/communitywarning.html')
+        if one_post.author == User.objects.get(username = request.user.get_username()):
+                one_post = Posting.objects.get(pk = post_id)
+                form = CommunityCreate(instance = one_post)
+                return render(request, 'communityedit.html', {'posts' : one_post, 'form' : form})
+        else:
+                return redirectForm(request, 'Not allow edit this post!') 
 
 def communityupdate(request,post_id):
     if(request.method == 'POST'):
@@ -63,10 +65,19 @@ def communityupdate(request,post_id):
 
         return redirect('/community/show/'+str(one_post.id))
 
-def communitydelete(request,post_id):
-    one_post = get_object_or_404(Posting,id=post_id)
-    one_post.delete()
-    return redirect('/community')
+# def communitydelete(request,post_id):
+#     one_post = get_object_or_404(Posting,id=post_id)
+#     one_post.delete()
+#     return redirect('/community')
+
+
+def communitydelete(request, post_id):
+    one_post = Posting.objects.get(pk = post_id)
+    if one_post.author == User.objects.get(username = request.user.get_username()):
+        one_post.delete()
+        return redirect('/community')
+    else:
+        return redirectForm(request, 'Not allow delete this post!' )
 
 ##########################comment #######################################
 
@@ -77,10 +88,17 @@ def commentcreate(request,post_id):
     return redirect('/community/show/'+str(post_id))
 
 def commentdelete(request,post_id,comment_id):
+        one_comment = get_object_or_404(PostingComment,id=comment_id,posting=post_id)
+        if one_comment.author == User.objects.get(username = request.user.get_username()):
+                one_comment = get_object_or_404(PostingComment,id=comment_id,posting=post_id)
+                one_comment.delete()
+                return redirect('/community/show/'+str(post_id))
+        else:
+                return redirectForm(request, 'Not allow delete this comment!' )
 
-    one_comment = get_object_or_404(PostingComment,id=comment_id,posting=post_id)
-    one_comment.delete()
-    return redirect('/community/show/'+str(post_id))
+
+def redirectForm(request,msg):
+        return render(request, 'redirect.html', {'msg': msg})
 
 
 

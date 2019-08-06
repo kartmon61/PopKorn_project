@@ -63,11 +63,25 @@ def chartbuks(request):
 
 def chartmnet(request):
     return render(request,'mnet.html')    
-#----------------------------------------------
+#-------------------------------------------------------------#
 
+#--------------------calendar---------------------------------#
 
 def calendar(request):
     return render(request,'calendar.html')
+
+def calendar6(request):
+    return render(request,'calendar6.html')
+
+def calendar7(request):
+    return render(request,'calendar7.html')
+
+def calendar9(request):
+    return render(request,'calendar9.html')
+
+def calendar10(request):
+    return render(request,'calendar10.html')    
+
 
 
  

@@ -17,6 +17,18 @@ class Posting(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User,on_delete=True,null=True,default=1)
     content = RichTextUploadingField()
+    post_hit = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+    
+    @property
+    def update_counter(self):
+        self.post_hit = self.post_hit+1
+        self.save()
+
+
+    
 
 
 class PostingComment(models.Model):

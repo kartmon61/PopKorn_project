@@ -23,7 +23,7 @@
         <td>hit</td>
         <td>date</td>
       </tr>
-        {%if posts %}
+        {%if page_posts %}
           {% for post in page_posts %}
             <tr path="/community/show/{{post.id}}"> 
               <td>{{post.id}}</td>

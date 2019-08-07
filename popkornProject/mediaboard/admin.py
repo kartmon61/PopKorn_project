@@ -1,3 +1,5 @@
 from django.contrib import admin
-
-# Register your models here.
+from .models import Mediaboard,Mcategory  
+ 
+admin.site.register(Mediaboard)
+admin.site.register(Mcategory)

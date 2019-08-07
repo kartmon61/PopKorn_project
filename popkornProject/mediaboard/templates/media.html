@@ -1,56 +1,119 @@
 {% extends 'layout.html' %}
 {% block layoutblock %}
 
+<script>
+        $(function(){
+                $("select").change(function(){
+                        var val = $(this).children("option:selected").text();
+                        if(val == "ETC ADD"){
+                                $(".category").toggle();
+                        }
+                });
+
+                $(".tag").click(function(){
+                        location.href="?search="+$(this).text().replace(")","");
+                });
+ 
+        });
+</script>
 <section id="media">
         {% if user.is_authenticated %} 
-        <a href="/community/new" class="btn purple right">WRITE</a>
+        <a href="#" class="btn purple right popup_open" pop_nm="media_write">WRITE</a>
         {%endif%}
+        {% for m in page_posts%}
         <article>
             <div class="media-title">
-                    <a href="#" class="tag">BTS)</a>
-                    BTS (방탄소년단) '작은 것들을 위한 시 (Boy With Luv) feat. Halsey' Official MV
-                    <p>2019.05.20</p>
+                    <a href="#" class="tag">{{m.category}})</a>
+                    {{m.title}} 
+                    <p>{{m.created_at | date:"f  d Y" }}</p>
+            
+                    <div class="date">
+                        <a href="/mediaboard/edit/{{m.id}}">edit</a>
+                        <a href="/mediaboard/delete/{{m.id}}">delete</a>
+                    </div> 
             </div>
             <iframe width="80%"
-                    src="https://www.youtube.com/embed/XsX3ATc3FbA" 
+                    src="{{m.murl}}" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
             </iframe>
         </article> 
- 
-        <div class="pop_up">
+        {%endfor%}
+
+        <div class="pop_up" pop_nm="media_write">
                 <div class="pop_up_h">
                         <a href="#" class="close">x</a> 
                 </div>
                 <div class="pop_up_con">
                         <h2>Share your k-pop youtube</h2>
-                        <form action="" method="POST">
+                        {% if board is None%}
+                        <form action="/mediaboard/create" method="POST">
+                        {%else%}
+                        <form action="/mediaboard/update/{{board.id}}" method="POST">
+                        {%endif%}
                                 {% csrf_token %}
-                                <select class="input_">       
-                                        <option>1</option>
-                                        <option>1</option>
-                                        <option>1</option>
-                                        <option>1</option>
+                                <select class="input_ category" name="category">       
+                                        {%for o in category%}
+                                        <option>{{o.category}}</option>
+                                        {%endfor%}
+                                        <option>ETC ADD</option>
                                 </select>
+                                <input type="text" placeholder="keyword" class="input_ category" name="category_">
                                 <input type="text" placeholder="title" class="input_" name="m_title" required>
                                 <textarea name="m_content"  
                                         cols="30" rows="5" 
-                                        placeholder="Embed Video"
+                                        placeholder="Embed code here"
                                         required
                                         class="input_"></textarea>
                                 <input type="submit" value="POST" class="btn purple">
                         </form>
                 </div>
         </div>
+        
+        <!--수정-->
+        {% if board is not None%}
+        <script>
+                $(function(){
+                       
+                        $("select").val("{{board.category}}").attr("selected","selected");
+                        $("input[name='m_title']").val("{{board.title}}");
+                        $("textarea[name='m_content']").val(
+                                "<iframe width='80%'"+
+                                "src='{{board.murl}}'"+ 
+                                "frameborder='0'"+ 
+                                "allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'"+ 
+                                "allowfullscreen>"+
+                                "</iframe>"
+                        );
+                        $("#media>form").attr("action","/mediaboard/update/{{board.id}}")
+                        $(".bg").show();
+                        $(".pop_up[pop_nm='media_write']").show(); 
+                        $(".close").click(function(){
+                                if(confirm("Do you want to cancel ?")){
+                                        location.href="/mediaboard"
+                                }
+                        });
+
+                });
+        </script>
+        {%endif%}
+
         <ul class="paging">
-            <li><a href="#">&lt;</a></li>
-            <li><a href="#" class="active">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&gt;</a></li>
-        </ul>
+                {%if page_posts.has_previous%}
+                        <li><a href="?page={{page_posts.previous_page_number}}">&lt;</a></li>
+                {%endif%}
+                {%for i in page_posts.paginator.page_range%}
+                        {% if i == page_posts.number%}
+                        <li><a href="?page={{page_posts.number}}" class="active">{{i}}</a></li>
+                        {%else%}
+                        <li><a href="?page={{page_posts.number}}">{{i}}</a></li>
+                        {%endif%}
+                {%endfor%}
+
+                {%if page_posts.has_next%}
+                <li><a href="?page={{page_posts.next_page_number}}">&gt;</a></li> 
+                {%endif%} 
+        </ul> 
     </section>
 {% endblock %}

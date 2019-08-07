@@ -12,7 +12,7 @@ def community(request):
     page = request.GET.get('page')
     page_posts = paginator.get_page(page)
 
-    return render(request,'community.html',{'posts':posts,'page_posts':page_posts})
+    return render(request,'community.html',{'page_posts':page_posts})
 
 def communitynew(request):
         if request.method == 'POST':

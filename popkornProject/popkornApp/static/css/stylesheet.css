@@ -244,11 +244,12 @@ header ul[no="1"] a:hover, .nav_active{
 }
 
 .media-title{
-    font-size: 1em;
+    font-size: 1.2em;
     position: relative;
     width:80%;
     margin:auto;
     color:#464646;
+    font-family: 'Darker Grotesque', sans-serif;
 }
 .media-title p{
     font-size: 0.8em;
@@ -256,6 +257,7 @@ header ul[no="1"] a:hover, .nav_active{
 }
 .tag{
     font-weight: bold;
+    color:#5e52a1; 
 }
 .paging{
     list-style-type: none;
@@ -395,6 +397,12 @@ header ul[no="1"] a:hover, .nav_active{
     padding-left:50px; 
 } 
 /* 미디어 페이지 */
+#media{
+    height:500px;
+}
+#media .date{
+    margin-top:-65px; 
+}
 #media .btn{
     font-size: 0.8em;
     margin-right: 30px;
@@ -405,32 +413,40 @@ header ul[no="1"] a:hover, .nav_active{
     border-bottom: 1px solid var(--basic-br-color);
     padding:10px;
 }
-
+  
 #media iframe{
+    clear:right;
     display:block;
     margin:auto;
 }
-#media .pop_up{
-    display: block;
-}  
+ 
 #media form .input_{
     font-size: 1em;
     font-family: 'Darker Grotesque', sans-serif;
 }
 #media form .input_:nth-child(2){ 
     float: left;
-    height: 46px;
-    width: 20%;  
+    height: 43px;
+    width: 30%;  
     display: block;
     margin-left: 28px;
 }
-#media form .input_:nth-child(3){ 
+#media form .input_:nth-child(3){
+    float: left;
+    width: 24%;  
+    height: 21px; 
+    margin-top:0px;
+    margin-left: 28px;
+    display:none;
+} 
+#media form .input_:nth-child(4){ 
     margin: auto;
     display: block;
+    width: 50%;  
     margin-left: -8px;
     border-left: 0px;
 }
-#media form .input_:nth-child(4){
+#media form .input_:nth-child(5){
     width:80%;
     margin: 5px auto;
 
@@ -441,6 +457,11 @@ header ul[no="1"] a:hover, .nav_active{
     display: block;
     margin:auto;
     padding:10px 5px;
+}
+#media form option{
+    display: block;
+    width: inherit;
+    border: 1px solid black;
 }
 /*커뮤니티 페이지*/
 #community{

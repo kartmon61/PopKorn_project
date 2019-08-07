@@ -87,8 +87,8 @@ def calendar10(request):
 #---------------------------login------------------------------#
 
 def signup(request):
-        red_path = request.POST['red_path']
         if request.method == 'POST':
+                red_path = request.POST['red_path']
                 if request.POST['sign_pw1'] == request.POST['sign_pw2']: 
                         try:
                                 user = User.objects.create_user(
@@ -96,21 +96,21 @@ def signup(request):
                                         password=request.POST['sign_pw1'])   
                                 auth.login(request,user) 
                                 print('signup has been completed !')
+                                return redirect(red_path)
                         except IntegrityError as e:
                              auth.logout(request)    
-                             return redirectForm(request,{'msg':'username is already exist','red_path':red_path})   
+                             return redirectForm(request,'username is already exist')   
                         except:
                             auth.logout(request)
-                            return redirectForm(request,'error!')   
-                        return redirect(red_path)
+                            return redirectForm(request,'error!')    
                 else : 
-                        return redirectForm(request, {'msg':'passwords must be matched!','red_path':red_path}) 
+                        return redirectForm(request,'passwords must be matched!') 
             
 
  
-def login(request):
-        red_path = request.POST['red_path'] 
+def login(request): 
         if request.method == 'POST':
+                red_path = request.POST['red_path']
                 username = request.POST['login_id']
                 password = request.POST['login_pw'] 
                 user = auth.authenticate(request, username=username, password=password) 
@@ -119,21 +119,20 @@ def login(request):
                         auth.login(request,user)  
                         return redirect(red_path)
                 else: 
-                        return redirectForm(request, {'msg':'username or password is incorrect.','red_path':red_path}) 
+                        return redirectForm(request,'username or password is incorrect.') 
         else:
                 return render(request, 'index.html')
 
 
-def logout(request):
-        red_path = request.POST['red_path']
+def logout(request): 
         if request.method == 'POST':
                 auth.logout(request)
         return redirect('index')
 
  
  ############  폼 처리 후 리다이렉션 #######################
-def redirectForm(request,dir):
-        return render(request, 'redirect.html', {'msg': dir.msg,'url':dir.red_path}) 
+def redirectForm(request,msg):
+        return render(request, 'redirect.html', {'msg': msg}) 
 
 
  

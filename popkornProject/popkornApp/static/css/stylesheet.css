@@ -673,14 +673,18 @@ header ul[no="1"] a:hover, .nav_active{
 
 /* 캘린더 페이지 */
 
-.calendar-wrap {
-    padding-bottom: 30px;
+.calendar-wrap { 
+    display:block;
+    height:800px; 
+    padding-bottom:500px;
+
 }
 #calendar  {
+    display:block;
     padding-left: 50px;
     padding-right: 100px;
     width: 80%;
-    padding-bottom: 1000px;
+    margin:auto; 
     }
 #calendar a {
     color: #8e352e;

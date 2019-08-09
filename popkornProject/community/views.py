@@ -15,23 +15,29 @@ def community(request):
     return render(request,'community.html',{'page_posts':page_posts})
 
 def communitynew(request):
-        if request.method == 'POST':
+        if request.method == 'POST': 
                 form = CommunityCreate(request.POST)
+                
                 if form.is_valid():
-                        form.save()
-                        return redirect('')
+                        # form.Meta.model.author=User.objects.get(username = request.user.get_username())
+                        posting = form.save(commit=False)
+                        posting.author = request.user
+                        posting.save()
+                        return redirect('/community')
                 else:
-                        return redirect('index')
+                        return redirect('/')
         else:
                 form = CommunityCreate()
                 return render(request, 'communitynew.html', {'form': form})
  
-def communitycreate(request):
-    new_post = Posting()
-    new_post.title = request.POST['title']
-    new_post.content = request.POST['content']
-    new_post.save()
-    return redirect('/community')
+# def communitycreate(request):
+#     print(request.user)
+#     new_post = Posting()
+#     new_post.title = request.POST['title']
+#     new_post.content = request.POST['content']
+#     new_post.author = request.user
+#     new_post.save()
+#     return redirect('/community')
 
 def communityshow(request,post_id):
     one_post = get_object_or_404(Posting,id=post_id)

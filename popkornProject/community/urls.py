@@ -4,7 +4,7 @@ from .import views
 urlpatterns = [
     path('',views.community,name=''),
     path('new',views.communitynew,name='new'),
-    path('create',views.communitycreate,name='create'),
+    # path('create',views.communitycreate,name='create'),
     path('show/<int:post_id>',views.communityshow,name='show'),
     path('edit/<int:post_id>',views.communityedit,name='edit'),
     path('update/<int:post_id>',views.communityupdate,name='update'),

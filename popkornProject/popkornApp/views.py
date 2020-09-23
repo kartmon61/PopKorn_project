@@ -15,16 +15,14 @@ def getDate():
         now = datetime.now() 
         return  '%s.%s.%s' % (now.month, now.day , now.year )
 
-#### https://www.koreaboo.com 기준으로 데이터 가져옴 ####
+#### https://www.koreaboo.com 기준으로 데이터 가져옴 #### 
 def getData(url,path):
-        response = urlopen(url)
-        html = response.read().decode(encoding="iso-8859-1")
-        bsObject = BeautifulSoup(html, 'html.parser')
-        #html = urlopen(url)
-        #bsObject = BeautifulSoup(html, "html.parser",from_encoding="utf-8") 
+        html = urlopen(url)
+        bsObject = BeautifulSoup(html, "html.parser",from_encoding="utf-8") 
         obj =bsObject.find_all("article",{"class":"cat-news"})  
         datalist= []
-        for arial in obj :
+        try:
+                for arial in obj :
                         link = arial.select('a')[0].get('href')
                         title = arial.select('a')[0].get('aria-label') 
                         src = arial.select('source')[0].get('data-srcset').split(" ")[0]
@@ -33,7 +31,8 @@ def getData(url,path):
                         data["title"] = title
                         data["src"] = src    
                         datalist.append(data)
-       
+        except:
+                redirect(path)
         return datalist
 
 def index(request):

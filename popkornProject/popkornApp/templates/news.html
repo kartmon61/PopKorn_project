@@ -3,7 +3,7 @@
 <section id="news">   
   <h1>TODAY'S NEWS <br/>{{now}}</h1>
   <article>
-    {% if data is not none%}
+    {% if data%}
       {% for i in data%}   
       <a href="{{i.link}}"> 
         <img src="{{i.src}}" alt="...">

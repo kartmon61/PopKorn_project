@@ -1,0 +1,1 @@
+web: gunicorn popkornProject.wsgi --log-file - 
